@@ -1,0 +1,15 @@
+[package]
+name = "rust-square-api-client-lib"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+log = "0.4.14"
+reqwest = { version = "0.11.9", features = ["json"] }
+package_info = "0.1.0"
+package_info_derive = "0.1.0"
+rustc_version_runtime = "0.2.1"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
