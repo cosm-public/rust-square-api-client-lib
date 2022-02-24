@@ -1,35 +1,22 @@
-
-
 use log::{error, warn};
 
-use crate::{
-    models::{
-        errors::{ApiError, ErrorResponse},
-        CreateCardRequest,
-        CreateCardResponse,
-    },
-    // http::{
-    //     client::{
-    //         HttpClient,
-    //         HttpContext
-    //     },
-    //     request::HttpRequest
-    // },
-};
+use crate::models::{CreateCustomerRequest, CreateCustomerResponse, errors::{ApiError, ErrorResponse}};
 
 use super::BaseApi;
 
-const DEFAULT_URL: &str = "https://connect.squareupsandbox.com/v2/cards";
+const DEFAULT_URL: &str = "https://connect.squareupsandbox.com/v2/customers";
 
-pub struct CardsApi;
 
-impl CardsApi {
-    pub async fn create_card(&self, body: &CreateCardRequest) -> Result<CreateCardResponse, ApiError> {
+pub struct CustomersApi;
+
+impl CustomersApi {
+    pub async fn create_customer(&self, body: &CreateCustomerRequest) -> Result<CreateCustomerResponse, ApiError> {
         let response = self.get_client()?.post(DEFAULT_URL).json(body).send().await.map_err(|e| {
             let msg = format!("Error posting: {}", e);
             error!("{}", msg);
             ApiError::new(&msg)
         })?;
+
         if response.status().is_success() {
             Ok(response.json().await.map_err(|e| {
                 let msg = format!("Error deserializing: {}", e);
@@ -54,9 +41,9 @@ impl CardsApi {
     }
 }
 
-impl BaseApi for CardsApi {}
+impl BaseApi for CustomersApi {}
 
-impl Default for CardsApi {
+impl Default for CustomersApi {
     fn default() -> Self {
         Self
     }
