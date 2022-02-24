@@ -11,11 +11,7 @@ pub struct CustomersApi;
 
 impl CustomersApi {
     pub async fn create_customer(&self, body: &CreateCustomerRequest) -> Result<CreateCustomerResponse, ApiError> {
-        let response = self.get_client()?.post(DEFAULT_URL).json(body).send().await.map_err(|e| {
-            let msg = format!("Error posting: {}", e);
-            error!("{}", msg);
-            ApiError::new(&msg)
-        })?;
+        let response = self.get_client()?.post(DEFAULT_URL, body).await?;
 
         if response.status().is_success() {
             Ok(response.json().await.map_err(|e| {
