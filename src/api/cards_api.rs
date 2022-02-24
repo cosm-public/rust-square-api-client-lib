@@ -25,11 +25,7 @@ pub struct CardsApi;
 
 impl CardsApi {
     pub async fn create_card(&self, body: &CreateCardRequest) -> Result<CreateCardResponse, ApiError> {
-        let response = self.get_client()?.post(DEFAULT_URL).json(body).send().await.map_err(|e| {
-            let msg = format!("Error posting: {}", e);
-            error!("{}", msg);
-            ApiError::new(&msg)
-        })?;
+        let response = self.get_client()?.post(DEFAULT_URL, body).await?;
         if response.status().is_success() {
             Ok(response.json().await.map_err(|e| {
                 let msg = format!("Error deserializing: {}", e);

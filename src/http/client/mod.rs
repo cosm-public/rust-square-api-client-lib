@@ -1,7 +1,7 @@
 
 
-// mod http_client;
-// pub use http_client::HttpClient;
+mod http_client;
+pub use http_client::HttpClient;
 
 // mod http_client_configuration;
 // pub use http_client_configuration::HttpClientConfiguration;
