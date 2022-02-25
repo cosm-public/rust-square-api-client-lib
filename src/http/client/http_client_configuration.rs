@@ -4,27 +4,48 @@
 
 // use super::HttpClient;
 
-// const DEFAULT_TIMEOUT: i32 = 60;
+use std::env;
 
-// #[derive(Debug)]
-// pub struct HttpClientConfiguration {
-//     pub timeout: i32,
-//     pub number_of_retries: i16,
-//     pub back_off_factor: i16,
-//     pub retry_interval: i32,
-//     pub http_status_codes_to_retry: HashSet<i16>,
-//     pub http_methods_to_retry: HashSet<HttpMethod>,
-//     pub maximum_retry_wait_time: i32,
-//     pub should_retry_on_timeout: bool,
-//     pub http_client: Option<HttpClient>,
-//     pub override_http_client_configurations: bool,
-// }
+use package_info::PackageInfo;
 
-// impl Default for HttpClientConfiguration {
-//     fn default() -> Self {
-//         Self {
-//             timeout: DEFAULT_TIMEOUT,
-//             ..Default::default()
-//         }
-//     }
-// }
+use crate::{config::CargoPackageInfo, http::Headers};
+
+const DEFAULT_TIMEOUT: u32 = 60;
+
+#[derive(Debug)]
+pub struct HttpClientConfiguration {
+    pub timeout: u32,
+    pub user_agent: String,
+    pub default_headers: Headers,
+}
+
+impl HttpClientConfiguration {
+    pub fn new(timeout: u32, user_agent: String, mut default_headers: Headers) -> Self {
+        if !default_headers.has_user_agent() {
+            default_headers.set_user_agent(&user_agent);
+        }
+        Self {
+            timeout,
+            user_agent,
+            default_headers,
+        }
+    }
+
+    pub(crate) fn default_user_agent() -> String {
+        let sdk_version = CargoPackageInfo::version().unwrap_or_default();
+        let engine = "Rust";
+        let rust_version = rustc_version_runtime::version();
+        let os = env::consts::OS;
+        format!("Rust Square API Client Lib/0.1.0 ({}) {}/{} ({})", sdk_version, engine, rust_version, os)
+    }
+}
+
+impl Default for HttpClientConfiguration {
+    fn default() -> Self {
+        Self {
+            timeout: DEFAULT_TIMEOUT,
+            user_agent: Self::default_user_agent(),
+            default_headers: Default::default(),
+        }
+    }
+}
