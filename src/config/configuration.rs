@@ -12,7 +12,7 @@ pub struct Configuration {
     /// Square connect API versions.
     pub square_version: String,
     /// Http Client Configuration instance.
-    // pub http_client_config: HttpClientConfiguration,
+    //pub http_client_config: HttpClientConfiguration,
     /// Additional headers to add to each API request.
     // pub additional_headers: Headers,
     /// Additional detail which can be appended with User-Agent header.
