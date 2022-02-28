@@ -48,7 +48,7 @@ pub struct SquareClient {
     // pub http_callback: HttpCallback,
 }
 
-impl<'a> SquareClient {
+impl SquareClient {
     pub fn try_new(config: Configuration) -> Result<Self, ApiError> {
         let http_client = HttpClient::try_new(&config.http_client_config)?;
 
