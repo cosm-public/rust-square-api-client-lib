@@ -7,25 +7,23 @@ use crate::{
         errors::{ApiError, ErrorResponse},
         CreateCardRequest,
         CreateCardResponse,
-    },
-    // http::{
-    //     client::{
-    //         HttpClient,
-    //         HttpContext
-    //     },
-    //     request::HttpRequest
-    // },
+    }, config::Configuration, http::client::HttpClient,
 };
 
-use super::BaseApi;
+const DEFAULT_URI: &str = "/cards";
 
-const DEFAULT_URL: &str = "https://connect.squareupsandbox.com/v2/cards";
-
-pub struct CardsApi;
+pub struct CardsApi {
+    config: Configuration,
+    client: HttpClient,
+}
 
 impl CardsApi {
+    pub fn new(config: Configuration, client: HttpClient) -> Self {
+        Self { config, client }
+    }
+
     pub async fn create_card(&self, body: &CreateCardRequest) -> Result<CreateCardResponse, ApiError> {
-        let response = self.get_client()?.post(DEFAULT_URL, body).await?;
+        let response = self.client.post(&self.url(), body).await?;
         if response.status().is_success() {
             Ok(response.json().await.map_err(|e| {
                 let msg = format!("Error deserializing: {}", e);
@@ -48,12 +46,8 @@ impl CardsApi {
             }
         }
     }
-}
 
-impl BaseApi for CardsApi {}
-
-impl Default for CardsApi {
-    fn default() -> Self {
-        Self
+    fn url(&self) -> String {
+        format!("{}{}", &self.config.get_base_url(), DEFAULT_URI)
     }
 }

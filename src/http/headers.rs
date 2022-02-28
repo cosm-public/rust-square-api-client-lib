@@ -9,7 +9,7 @@ use super::client::HttpClientConfiguration;
 
 const DEFAULT_SQUARE_VERSION: &str = "2022-02-16";
 
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 pub struct Headers {
     pub headers: HashMap<String, String>,
 }
@@ -49,12 +49,12 @@ impl Default for Headers {
     }
 }
 
-impl TryFrom<Headers> for HeaderMap {
+impl TryFrom<&Headers> for HeaderMap {
     type Error = ApiError;
 
-    fn try_from(headers: Headers) -> Result<Self, Self::Error> {
+    fn try_from(headers: &Headers) -> Result<Self, Self::Error> {
         let mut header_map = Self::new();
-        for (k, v) in headers.headers {
+        for (k, v) in &headers.headers {
             let header_name = HeaderName::from_bytes(k.as_bytes()).map_err(|e| {
                 let msg = format!("Error generating {} header name: {}", k, e);
                 error!("{}", msg);

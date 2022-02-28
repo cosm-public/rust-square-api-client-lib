@@ -1,17 +1,22 @@
 use log::{error, warn};
 
-use crate::models::{CreateCustomerRequest, CreateCustomerResponse, errors::{ApiError, ErrorResponse}};
+use crate::{models::{CreateCustomerRequest, CreateCustomerResponse, errors::{ApiError, ErrorResponse}}, config::Configuration, http::client::HttpClient};
 
-use super::BaseApi;
-
-const DEFAULT_URL: &str = "https://connect.squareupsandbox.com/v2/customers";
+const DEFAULT_URI: &str = "/customers";
 
 
-pub struct CustomersApi;
+pub struct CustomersApi {
+    config: Configuration,
+    client: HttpClient,
+}
 
 impl CustomersApi {
+    pub fn new(config: Configuration, client: HttpClient) -> Self {
+        Self { config, client }
+    }
+    
     pub async fn create_customer(&self, body: &CreateCustomerRequest) -> Result<CreateCustomerResponse, ApiError> {
-        let response = self.get_client()?.post(DEFAULT_URL, body).await?;
+        let response = self.client.post(&self.url(), body).await?;
 
         if response.status().is_success() {
             Ok(response.json().await.map_err(|e| {
@@ -35,12 +40,8 @@ impl CustomersApi {
             }
         }
     }
-}
 
-impl BaseApi for CustomersApi {}
-
-impl Default for CustomersApi {
-    fn default() -> Self {
-        Self
+    fn url(&self) -> String {
+        format!("{}{}", &self.config.get_base_url(), DEFAULT_URI)
     }
 }

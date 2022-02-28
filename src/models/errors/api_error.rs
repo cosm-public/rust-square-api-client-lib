@@ -2,8 +2,8 @@ use super::Error;
 
 #[derive(Debug, Default)]
 pub struct ApiError {
-    message: String,
-    errors: Vec<Error>,
+    pub message: String,
+    pub errors: Vec<Error>,
 }
 
 impl ApiError {
