@@ -1,8 +1,6 @@
 //! Gateway for the API
 
-use std::collections::HashMap;
-
-use crate::{api::*, config::Environment};
+use crate::{api::*, config::Configuration, http::client::HttpClient, models::errors::ApiError};
 
 /// Gateway struct for the library.
 /// This struct acts as a factory for Apis.
@@ -16,7 +14,7 @@ pub struct SquareClient {
     pub cards: CardsApi,
     // pub cash_drawers: CashDrawersApi,
     // pub catalog: CatalogApi,
-    // pub customers: CustomersApi,
+    pub customers: CustomersApi,
     // pub customer_groups: CustomerGroupsApi,
     // pub customer_segments: CustomerSegmentsApi,
     // pub devices: DevicesApi,
@@ -40,9 +38,7 @@ pub struct SquareClient {
     // pub subscriptions: SubscriptionsApi,
     // pub team: TeamApi,
     // pub terminal: TerminalApi,
-    // pub environment: Environment,
-    // pub custom_url: String,
-    // pub square_version: String,
+    // pub config: Configuration,
     // pub http_client: HttpClient,
     // pub http_client_config: HttpClientConfiguration,
     // pub additional_headers: Headers,
@@ -53,15 +49,14 @@ pub struct SquareClient {
 }
 
 impl SquareClient {
-    pub fn new() -> Self {
-        Self::default()
-    }
-}
+    pub fn try_new(config: Configuration) -> Result<Self, ApiError> {
+        let http_client = HttpClient::try_new(&config.http_client_config)?;
 
-impl Default for SquareClient {
-    fn default() -> Self {
-        Self {
-            cards: CardsApi::default(),
-        }
+        let this: SquareClient = Self {
+            cards: CardsApi::new(config.clone(), http_client.clone()),
+            customers: CustomersApi::new(config, http_client),
+        };
+
+        Ok(this)
     }
 }

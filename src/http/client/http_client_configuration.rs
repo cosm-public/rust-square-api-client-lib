@@ -12,7 +12,7 @@ use crate::{config::CargoPackageInfo, http::Headers};
 
 const DEFAULT_TIMEOUT: u32 = 60;
 
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 pub struct HttpClientConfiguration {
     pub timeout: u32,
     pub user_agent: String,
