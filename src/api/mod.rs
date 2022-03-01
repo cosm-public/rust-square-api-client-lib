@@ -1,4 +1,6 @@
 
+mod base_api;
+pub(crate) use base_api::BaseApi;
 
 mod cards_api;
 mod customers_api;
