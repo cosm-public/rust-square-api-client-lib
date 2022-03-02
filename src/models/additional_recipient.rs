@@ -5,7 +5,7 @@ use serde::Deserialize;
 use super::Money;
 
 /// This is a model struct for AdditionalRecipient type.
-#[derive(Debug, Default, Deserialize, Hash, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, Hash, PartialEq)]
 pub struct AdditionalRecipient {
     /// The location ID for a recipient (other than the merchant) receiving a portion of this
     /// tender.

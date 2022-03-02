@@ -5,7 +5,7 @@ use serde::Deserialize;
 use super::{AdditionalRecipient, Money, TenderCardDetails, TenderCashDetails};
 
 /// This is a model struct for Tender type.
-#[derive(Debug, Default, Deserialize, Hash, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, Hash, PartialEq)]
 pub struct Tender {
     /// The tender's unique ID.
     pub id: String,

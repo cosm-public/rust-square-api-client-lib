@@ -5,7 +5,7 @@ use serde::Deserialize;
 use super::{Address, Refund, Tender};
 
 /// This is a model struct for Transaction type.
-#[derive(Debug, Default, Deserialize, Hash, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, Hash, PartialEq)]
 pub struct Transaction {
     /// The transaction's unique ID, issued by Square payments servers.
     pub id: String,

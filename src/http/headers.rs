@@ -1,3 +1,5 @@
+//! Represents a collection of Request Headers
+
 use std::{collections::HashMap, env};
 
 use log::{error, warn};
@@ -9,24 +11,31 @@ use super::client::HttpClientConfiguration;
 
 const DEFAULT_SQUARE_VERSION: &str = "2022-02-16";
 
+/// A collection of Request Headers
 #[derive(Clone, Debug)]
 pub struct Headers {
+    /// The request headers as key-value pairs
     pub headers: HashMap<String, String>,
 }
 
 impl Headers {
+    /// Indicates whether the headers include the User Agent header
     pub fn has_user_agent(&self) -> bool {
         self.headers.contains_key("user-agent")
     }
 
+    /// Sets the User Agent header
     pub fn set_user_agent(&mut self, user_agent: &str) -> Option<String> {
         self.insert("user-agent", user_agent)
     }
 
+    /// Adds a request header to the collection
     pub fn insert(&mut self, header_name: &str, header_value: &str) -> Option<String> {
         self.headers.insert(String::from(header_name), String::from(header_value))
     }
 
+    /// The default authorization header is a Bearer token found in the `SQUARE_API_TOKEN`
+    /// environment variable
     pub(crate) fn default_authorization() -> String {
         format!("Bearer {}", env::var("SQUARE_API_TOKEN").unwrap_or_else(|_| {
             warn!("No SQUARE_API_TOKEN environment variable found");
@@ -36,6 +45,12 @@ impl Headers {
 }
 
 impl Default for Headers {
+    /// The default set of request headers
+    /// * Content-Type: application/json
+    /// * Square-Version
+    /// * accept: application/json
+    /// * user-agent
+    /// * Authorization
     fn default() -> Self {
         let mut headers = HashMap::new();
 
@@ -52,6 +67,7 @@ impl Default for Headers {
 impl TryFrom<&Headers> for HeaderMap {
     type Error = ApiError;
 
+    /// Converts `Headers` into Reqwest lib's `HeaderMap`
     fn try_from(headers: &Headers) -> Result<Self, Self::Error> {
         let mut header_map = Self::new();
         for (k, v) in &headers.headers {

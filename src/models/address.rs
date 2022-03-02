@@ -3,7 +3,7 @@
 use serde::{Serialize, Deserialize};
 
 /// This is a model struct for Address type.
-#[derive(Debug, Default, Deserialize, Hash, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Hash, PartialEq, Serialize)]
 pub struct Address {
     /// The first line of the address. Fields that start with `address_line` provide the address's
     /// most specific details, like street number, street name, and building name. They do *not*

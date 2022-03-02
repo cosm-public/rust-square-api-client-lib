@@ -5,7 +5,7 @@ use serde::Deserialize;
 use super::Card;
 
 /// This is a model struct for TenderCardDetails type.
-#[derive(Debug, Default, Deserialize, Hash, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, Hash, PartialEq)]
 pub struct TenderCardDetails {
     /// Indicates the card transaction's current status.
     pub status: String,

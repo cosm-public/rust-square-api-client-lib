@@ -6,7 +6,7 @@ use super::errors::Error;
 use super::Transaction;
 
 /// This is a model class for ChargeResponse type.
-#[derive(Debug, Default, Deserialize, Hash, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, Hash, PartialEq)]
 pub struct CreateCardResponse {
     /// Any errors that occurred during the request.
     pub errors: Vec<Error>,

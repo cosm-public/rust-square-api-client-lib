@@ -3,7 +3,7 @@
 use serde::Deserialize;
 
 /// This is a model struct for Money type.
-#[derive(Debug, Default, Deserialize, Hash, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, Hash, PartialEq)]
 pub struct Money {
     /// The amount of money, in the smallest denomination of the currency indicated by `currency`.
     /// For example, when `currency` is `USD`, `amount` is in cents. Monetary amounts can be
