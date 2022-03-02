@@ -5,7 +5,7 @@ use serde::Deserialize;
 use super::Money;
 
 /// This is a model struct for TenderCashDetails type.
-#[derive(Debug, Default, Deserialize, Hash, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, Hash, PartialEq)]
 pub struct TenderCashDetails {
     /// Represents an amount of money. `Money` fields can be signed or unsigned. Fields that do not
     /// explicitly define whether they are signed or unsigned are considered unsigned and can only

@@ -1,22 +1,20 @@
+//! Shared API behavior
+
 use async_trait::async_trait;
 use log::{error, warn};
-use reqwest::Response;
 use serde::de::DeserializeOwned;
 
-use crate::models::errors::{ApiError, ErrorResponse};
+use crate::{models::errors::{ApiError, ErrorResponse}, http::HttpResponse};
 
-
+/// All APIs can make use of base API default implementations
 #[async_trait]
 pub(crate) trait BaseApi {
-    async fn handle_response<T: DeserializeOwned>(&self, response: Response) -> Result<T, ApiError> {
-        if response.status().is_success() {
-            Ok(response.json().await.map_err(|e| {
-                let msg = format!("Error deserializing: {}", e);
-                error!("{}", msg);
-                ApiError::new(&msg)
-            })?)
+    /// Handles API responses, including error responses
+    async fn handle_response<T: DeserializeOwned>(&self, response: HttpResponse) -> Result<T, ApiError> {
+        if response.is_success() {
+            Ok(response.json().await?)
         } else {
-            let err_response_res: Result<ErrorResponse, reqwest::Error> = response.json().await;
+            let err_response_res: Result<ErrorResponse, ApiError> = response.json().await;
             match err_response_res {
                 Ok(error_response) => {
                     let api_error = ApiError::with_response_errors("Error response", &error_response.errors);

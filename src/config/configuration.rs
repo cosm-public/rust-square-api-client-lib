@@ -1,4 +1,4 @@
-
+//! App configuration for the library
 
 use std::env;
 
@@ -33,6 +33,8 @@ pub struct Configuration {
 }
 
 impl Configuration {
+    /// Gets the base Square API URL for the configured environment, including the API version
+    /// specifier (e.g. "/v2")
     pub(crate) fn get_base_url(&self) -> String {
         let base_url = match self.environment.get_base_url() {
             Some(base_url) => base_url,
@@ -47,6 +49,8 @@ impl Configuration {
         format!("{}{}", base_url, self.base_uri)
     }
 
+    /// The default authorization header is a Bearer token found in the `SQUARE_API_TOKEN`
+    /// environment variable
     pub(crate) fn default_authorization() -> String {
         format!("Bearer {}", env::var("SQUARE_API_TOKEN").unwrap_or_else(|_| {
             warn!("No SQUARE_API_TOKEN environment variable found");
