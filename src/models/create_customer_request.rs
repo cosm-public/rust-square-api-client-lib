@@ -1,14 +1,13 @@
 //! Model struct for CreateCustomerRequest type
 
 /// This is a model struct for CreateCustomerRequest type
-
 use serde::Serialize;
 
 use super::{Address, CustomerTaxIds};
 
 #[derive(Debug, Default, Hash, PartialEq, Serialize)]
 pub struct CreateCustomerRequest {
-    /// The idempotency key for the request.	For more information, see
+    /// The idempotency key for the request. For more information, see
     /// [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency).
     pub idempotency_key: Option<String>,
     /// The given name (that is, the first name) associated with the customer profile.

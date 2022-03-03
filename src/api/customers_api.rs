@@ -1,9 +1,12 @@
-use crate::{models::{CreateCustomerRequest, CreateCustomerResponse, errors::ApiError}, config::Configuration, http::client::HttpClient};
+use crate::{
+    config::Configuration,
+    http::client::HttpClient,
+    models::{errors::ApiError, CreateCustomerRequest, CreateCustomerResponse},
+};
 
 use super::BaseApi;
 
 const DEFAULT_URI: &str = "/customers";
-
 
 pub struct CustomersApi {
     config: Configuration,
@@ -14,8 +17,11 @@ impl CustomersApi {
     pub fn new(config: Configuration, client: HttpClient) -> Self {
         Self { config, client }
     }
-    
-    pub async fn create_customer(&self, body: &CreateCustomerRequest) -> Result<CreateCustomerResponse, ApiError> {
+
+    pub async fn create_customer(
+        &self,
+        body: &CreateCustomerRequest,
+    ) -> Result<CreateCustomerResponse, ApiError> {
         let response = self.client.post(&self.url(), body).await?;
 
         self.handle_response(response).await

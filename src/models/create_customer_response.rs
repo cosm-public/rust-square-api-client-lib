@@ -1,11 +1,10 @@
 //! Model struct for CreateCustomerResponse type
 
 /// This is a model struct for CreateCustomerResponse type
-
 use serde::Deserialize;
 
-use super::Customer;
 use super::errors::Error;
+use super::Customer;
 
 #[derive(Debug, Default, Deserialize, Hash, PartialEq)]
 pub struct CreateCustomerResponse {

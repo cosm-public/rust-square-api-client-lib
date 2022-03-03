@@ -7,10 +7,10 @@ use serde::de::DeserializeOwned;
 use crate::models::errors::ApiError;
 
 /// Representation of HTTP API response.
-/// 
+///
 /// Wraps Reqwest lib's Response
 pub struct HttpResponse {
-    inner: Response
+    inner: Response,
 }
 
 impl HttpResponse {

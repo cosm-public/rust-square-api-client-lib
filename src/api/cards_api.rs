@@ -7,15 +7,16 @@
 //! application specifies the organization access token in the CreateCard request.
 //! * Save a card that can be charged by a single Square seller. Your application specifies the
 //! access token of the specific seller account in the CreateCard request.
-//! 
+//!
 //! The Cards API also supports other endpoints to manage the cards.
 
 use crate::{
+    config::Configuration,
+    http::client::HttpClient,
     models::{
-        errors::ApiError,
-        CreateCardRequest,
-        CreateCardResponse, DisableCardResponse, ListCardsParameters, ListCardsResponse, RetrieveCardResponse,
-    }, config::Configuration, http::client::HttpClient,
+        errors::ApiError, CreateCardRequest, CreateCardResponse, DisableCardResponse,
+        ListCardsParameters, ListCardsResponse, RetrieveCardResponse,
+    },
 };
 
 use super::BaseApi;
@@ -37,9 +38,12 @@ impl CardsApi {
     }
 
     /// Adds a card on file to an existing merchant.
-    pub async fn create_card(&self, body: &CreateCardRequest) -> Result<CreateCardResponse, ApiError> {
+    pub async fn create_card(
+        &self,
+        body: &CreateCardRequest,
+    ) -> Result<CreateCardResponse, ApiError> {
         let response = self.client.post(&self.url(), body).await?;
-        
+
         self.handle_response(response).await
     }
 
@@ -54,7 +58,10 @@ impl CardsApi {
 
     /// Retrieves a list of cards owned by the account making the request.
     /// A max of 25 cards will be returned.
-    pub async fn list_cards(&self, params: &ListCardsParameters) -> Result<ListCardsResponse, ApiError> {
+    pub async fn list_cards(
+        &self,
+        params: &ListCardsParameters,
+    ) -> Result<ListCardsResponse, ApiError> {
         let url = format!("{}{}", &self.url(), params.to_query_string());
         let response = self.client.get(&url).await?;
 

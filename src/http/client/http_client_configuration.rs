@@ -39,7 +39,10 @@ impl HttpClientConfiguration {
         let engine = "Rust";
         let rust_version = rustc_version_runtime::version();
         let os = env::consts::OS;
-        format!("Rust Square API Client Lib/0.1.0 ({}) {}/{} ({})", sdk_version, engine, rust_version, os)
+        format!(
+            "Rust Square API Client Lib/0.1.0 ({}) {}/{} ({})",
+            sdk_version, engine, rust_version, os
+        )
     }
 }
 

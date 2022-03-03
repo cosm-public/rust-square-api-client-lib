@@ -1,6 +1,6 @@
 //! Model struct for Address type
 
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 
 /// This is a model struct for Address type.
 #[derive(Clone, Debug, Default, Deserialize, Hash, PartialEq, Serialize)]

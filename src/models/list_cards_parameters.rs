@@ -57,7 +57,7 @@ impl ToString for ListCardsParameters {
         if self.sort_order != SortOrder::default() {
             params.push(format!("sort_order={}", self.sort_order.to_string()));
         }
-        
+
         if params.is_empty() {
             String::new()
         } else {

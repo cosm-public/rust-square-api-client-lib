@@ -38,11 +38,9 @@ impl Configuration {
     pub(crate) fn get_base_url(&self) -> String {
         let base_url = match self.environment.get_base_url() {
             Some(base_url) => base_url,
-            None => {
-                match &self.custom_url {
-                    Some(base_url) => base_url.as_str(),
-                    None => Environment::Sandbox.get_base_url().unwrap(),
-                }
+            None => match &self.custom_url {
+                Some(base_url) => base_url.as_str(),
+                None => Environment::Sandbox.get_base_url().unwrap(),
             },
         };
 
@@ -52,10 +50,13 @@ impl Configuration {
     /// The default authorization header is a Bearer token found in the `SQUARE_API_TOKEN`
     /// environment variable
     pub(crate) fn default_authorization() -> String {
-        format!("Bearer {}", env::var("SQUARE_API_TOKEN").unwrap_or_else(|_| {
-            warn!("No SQUARE_API_TOKEN environment variable found");
-            String::new()
-        }))
+        format!(
+            "Bearer {}",
+            env::var("SQUARE_API_TOKEN").unwrap_or_else(|_| {
+                warn!("No SQUARE_API_TOKEN environment variable found");
+                String::new()
+            })
+        )
     }
 }
 

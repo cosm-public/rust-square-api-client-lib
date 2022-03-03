@@ -5,7 +5,7 @@ use std::time::Duration;
 use log::error;
 use serde::Serialize;
 
-use crate::{models::errors::ApiError, http::HttpResponse};
+use crate::{http::HttpResponse, models::errors::ApiError};
 
 use super::HttpClientConfiguration;
 
@@ -29,7 +29,7 @@ impl HttpClient {
             error!("{}", msg);
             ApiError::new(&msg)
         })?;
-        
+
         Ok(Self { client })
     }
 

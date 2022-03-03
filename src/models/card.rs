@@ -1,6 +1,6 @@
 //! Model struct for the Card type
 
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 
 use super::Address;
 

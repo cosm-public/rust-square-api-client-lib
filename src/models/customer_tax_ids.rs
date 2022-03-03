@@ -1,6 +1,6 @@
 //! Model struct for CustomerTaxIds type
 
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 
 /// This is a model struct for CustomerTaxIds type
 #[derive(Debug, Default, Deserialize, Hash, PartialEq, Serialize)]

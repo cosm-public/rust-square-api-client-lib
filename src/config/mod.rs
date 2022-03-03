@@ -1,5 +1,3 @@
-
-
 mod cargo_package_info;
 pub(crate) use cargo_package_info::CargoPackageInfo;
 

@@ -3,7 +3,7 @@
 use std::{collections::HashMap, env};
 
 use log::{error, warn};
-use reqwest::header::{HeaderMap, HeaderValue, HeaderName};
+use reqwest::header::{HeaderMap, HeaderName, HeaderValue};
 
 use crate::models::errors::ApiError;
 
@@ -37,10 +37,13 @@ impl Headers {
     /// The default authorization header is a Bearer token found in the `SQUARE_API_TOKEN`
     /// environment variable
     pub(crate) fn default_authorization() -> String {
-        format!("Bearer {}", env::var("SQUARE_API_TOKEN").unwrap_or_else(|_| {
-            warn!("No SQUARE_API_TOKEN environment variable found");
-            String::new()
-        }))
+        format!(
+            "Bearer {}",
+            env::var("SQUARE_API_TOKEN").unwrap_or_else(|_| {
+                warn!("No SQUARE_API_TOKEN environment variable found");
+                String::new()
+            })
+        )
     }
 }
 

@@ -1,10 +1,9 @@
 //! Model struct for Customer type
 
 /// This is a model struct for Customer type.
-
 use serde::Deserialize;
 
-use super::{Card, Address, CustomerPreferences, CustomerTaxIds};
+use super::{Address, Card, CustomerPreferences, CustomerTaxIds};
 
 #[derive(Debug, Default, Deserialize, Hash, PartialEq)]
 pub struct Customer {
