@@ -2,8 +2,10 @@
 
 use serde::{Deserialize, Serialize};
 
+use super::enums::Country;
+
 /// This is a model struct for Address type.
-#[derive(Clone, Debug, Default, Deserialize, Hash, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
 pub struct Address {
     /// The first line of the address. Fields that start with `address_line` provide the address's
     /// most specific details, like street number, street name, and building name. They do *not*
@@ -28,5 +30,5 @@ pub struct Address {
     pub postal_code: Option<String>,
     /// Indicates the country associated with another entity, such as a business. Values are in [ISO
     /// 3166-1-alpha-2 format](http://www.iso.org/iso/home/standards/country_codes.htm).
-    pub country: Option<String>,
+    pub country: Option<Country>,
 }

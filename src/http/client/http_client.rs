@@ -33,6 +33,16 @@ impl HttpClient {
         Ok(Self { client })
     }
 
+    /// Sends an HTTP GET
+    pub async fn get(&self, url: &str) -> Result<HttpResponse, ApiError> {
+        let response = self.client.get(url).send().await.map_err(|e| {
+            let msg = format!("Error getting {}: {}", url, e);
+            error!("{}", msg);
+            ApiError::new(&msg)
+        })?;
+        Ok(HttpResponse::new(response))
+    }
+
     /// Sends an HTTP POST
     pub async fn post<T: Serialize>(&self, url: &str, body: &T) -> Result<HttpResponse, ApiError> {
         let response = self.client.post(url).json(body).send().await.map_err(|e| {
@@ -43,10 +53,20 @@ impl HttpClient {
         Ok(HttpResponse::new(response))
     }
 
-    /// Sends an HTTP GET
-    pub async fn get(&self, url: &str) -> Result<HttpResponse, ApiError> {
-        let response = self.client.get(url).send().await.map_err(|e| {
-            let msg = format!("Error getting {}: {}", url, e);
+    /// Sends an HTTP PUT
+    pub async fn put<T: Serialize>(&self, url: &str, body: &T) -> Result<HttpResponse, ApiError> {
+        let response = self.client.put(url).json(body).send().await.map_err(|e| {
+            let msg = format!("Error putting to {}: {}", url, e);
+            error!("{}", msg);
+            ApiError::new(&msg)
+        })?;
+        Ok(HttpResponse::new(response))
+    }
+
+    /// Sends an HTTP DELETE
+    pub async fn delete(&self, url: &str) -> Result<HttpResponse, ApiError> {
+        let response = self.client.delete(url).send().await.map_err(|e| {
+            let msg = format!("Error putting to {}: {}", url, e);
             error!("{}", msg);
             ApiError::new(&msg)
         })?;

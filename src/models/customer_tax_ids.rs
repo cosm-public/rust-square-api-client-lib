@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// This is a model struct for CustomerTaxIds type
-#[derive(Debug, Default, Deserialize, Hash, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
 pub struct CustomerTaxIds {
     /// The EU VAT identification number for the customer. For example, `IE3426675K`. The ID can
     /// contain alphanumeric characters only.

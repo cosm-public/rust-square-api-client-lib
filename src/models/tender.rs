@@ -1,11 +1,13 @@
 //! Model struct for Tender type
 
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-use super::{AdditionalRecipient, Money, TenderCardDetails, TenderCashDetails};
+use super::{
+    enums::TenderType, AdditionalRecipient, DateTime, Money, TenderCardDetails, TenderCashDetails,
+};
 
 /// This is a model struct for Tender type.
-#[derive(Clone, Debug, Default, Deserialize, Hash, PartialEq)]
+#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 pub struct Tender {
     /// The tender's unique ID.
     pub id: String,
@@ -13,8 +15,8 @@ pub struct Tender {
     pub location_id: String,
     /// The ID of the tender's associated transaction.
     pub transaction_id: String,
-    /// The timestamp for when the tender was created, in RFC 3339 format.
-    pub created_at: String,
+    /// The timestamp for when the tender was created.
+    pub created_at: DateTime,
     /// An optional note associated with the tender at the time of payment.
     pub note: String,
     /// Represents an amount of money. `Money` fields can be signed or unsigned. Fields that do not
@@ -42,7 +44,7 @@ pub struct Tender {
     /// the ID of the associated customer.
     pub customer_id: String,
     /// Indicates a tender's type.
-    pub tender_type: String,
+    pub tender_type: TenderType,
     /// Represents additional details of a tender with `type` `CARD` or `SQUARE_GIFT_CARD`
     pub card_details: TenderCardDetails,
     /// Represents the details of a tender with `type` `CASH`.

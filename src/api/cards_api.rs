@@ -76,6 +76,8 @@ impl CardsApi {
         self.handle_response(response).await
     }
 
+    /// Constructs the basic entity URL including domain and entity path. Any additional path
+    /// elements (e.g. path parameters) will need to be appended to this URL.
     fn url(&self) -> String {
         format!("{}{}", &self.config.get_base_url(), DEFAULT_URI)
     }

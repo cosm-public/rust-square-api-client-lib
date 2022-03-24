@@ -30,8 +30,8 @@ pub struct SquareClient {
     // pub transactions: TransactionsApi,
     // pub loyalty: LoyaltyApi,
     // pub merchants: MerchantsApi,
-    // pub orders: OrdersApi,
-    // pub payments: PaymentsApi,
+    pub orders: OrdersApi,
+    pub payments: PaymentsApi,
     // pub refunds: RefundsApi,
     // pub sites: SitesApi,
     // pub snippets: SnippetsApi,
@@ -54,7 +54,9 @@ impl SquareClient {
 
         let this: SquareClient = Self {
             cards: CardsApi::new(config.clone(), http_client.clone()),
-            customers: CustomersApi::new(config, http_client),
+            customers: CustomersApi::new(config.clone(), http_client.clone()),
+            orders: OrdersApi::new(config.clone(), http_client.clone()),
+            payments: PaymentsApi::new(config, http_client),
         };
 
         Ok(this)

@@ -1,11 +1,11 @@
 //! Model struct for Refund type
 
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-use super::{AdditionalRecipient, Money};
+use super::{enums::RefundStatus, AdditionalRecipient, DateTime, Money};
 
 /// This is a model struct for Refund type.
-#[derive(Clone, Debug, Default, Deserialize, Hash, PartialEq)]
+#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 pub struct Refund {
     /// The refund's unique ID.
     pub id: String,
@@ -15,8 +15,8 @@ pub struct Refund {
     pub transaction_id: String,
     /// The ID of the refunded tender.
     pub tender_id: String,
-    /// The timestamp for when the refund was created, in RFC 3339 format.
-    pub created_at: String,
+    /// The timestamp for when the refund was created.
+    pub created_at: DateTime,
     /// The reason for the refund being issued.
     pub reason: String,
     /// Represents an amount of money. `Money` fields can be signed or unsigned. Fields that do not
@@ -27,7 +27,7 @@ pub struct Refund {
     /// more information.
     pub amount_money: Money,
     /// Indicates a refund's current status.
-    pub status: String,
+    pub status: RefundStatus,
     /// Represents an amount of money. `Money` fields can be signed or unsigned. Fields that do not
     /// explicitly define whether they are signed or unsigned are considered unsigned and can only
     /// hold positive amounts. For signed fields, the sign of the value indicates the purpose of the

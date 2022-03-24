@@ -1,9 +1,11 @@
 //! Model struct for ListCardsParameters (query parameters)
 
-use super::SortOrder;
+use super::enums::SortOrder;
+
+const DEFAULT_SORT_ORDER: SortOrder = SortOrder::Asc;
 
 /// This is a model struct for ListCardsParameters (query parameters)
-#[derive(Debug, Default)]
+#[derive(Clone, Debug)]
 pub struct ListCardsParameters {
     /// A pagination cursor returned by a previous call to this endpoint. Provide this to
     /// retrieve the next set of results for your original query.
@@ -25,6 +27,18 @@ pub struct ListCardsParameters {
 impl ListCardsParameters {
     pub fn to_query_string(&self) -> String {
         self.to_string()
+    }
+}
+
+impl Default for ListCardsParameters {
+    fn default() -> Self {
+        Self {
+            cursor: Default::default(),
+            customer_id: Default::default(),
+            include_disabled: Default::default(),
+            reference_id: Default::default(),
+            sort_order: DEFAULT_SORT_ORDER,
+        }
     }
 }
 
@@ -54,8 +68,8 @@ impl ToString for ListCardsParameters {
             params.push(format!("reference_id={}", self.reference_id));
         }
 
-        if self.sort_order != SortOrder::default() {
-            params.push(format!("sort_order={}", self.sort_order.to_string()));
+        if self.sort_order != DEFAULT_SORT_ORDER {
+            params.push(format!("sort_order={}", serde_json::to_string(&self.sort_order).unwrap()));
         }
 
         if params.is_empty() {

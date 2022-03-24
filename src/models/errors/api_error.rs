@@ -1,6 +1,6 @@
 use super::Error;
 
-#[derive(Debug, Default)]
+#[derive(Clone, Debug, Default)]
 pub struct ApiError {
     pub message: String,
     pub errors: Vec<Error>,

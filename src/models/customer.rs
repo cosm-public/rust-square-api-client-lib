@@ -1,21 +1,23 @@
 //! Model struct for Customer type
 
 /// This is a model struct for Customer type.
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-use super::{Address, Card, CustomerPreferences, CustomerTaxIds};
+use super::{
+    enums::CustomerCreationSource, Address, Card, CustomerPreferences, CustomerTaxIds, DateTime,
+};
 
-#[derive(Debug, Default, Deserialize, Hash, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
 pub struct Customer {
     /// A unique Square-assigned ID for the customer profile. If you need this ID for an API
     /// request, use the ID returned when you created the customer profile or call the
     /// [SearchCustomers]($e/Customers/SearchCustomers) or
     /// [ListCustomers]($e/Customers/ListCustomers) endpoint.
     pub id: Option<String>,
-    /// The timestamp when the customer profile was created, in RFC 3339 format.
-    pub created_at: Option<String>,
-    /// The timestamp when the customer profile was last updated, in RFC 3339 format.
-    pub updated_at: Option<String>,
+    /// The timestamp when the customer profile was created.
+    pub created_at: Option<DateTime>,
+    /// The timestamp when the customer profile was last updated.
+    pub updated_at: Option<DateTime>,
     /// Payment details of the credit, debit, and gift cards stored on file for the customer
     /// profile. DEPRECATED at version 2021-06-16. Replaced by calling
     /// [ListCards]($e/Cards/ListCards) (for credit and debit cards on file) or
@@ -52,7 +54,7 @@ pub struct Customer {
     /// Represents communication preferences for the customer profile.
     pub preferences: Option<CustomerPreferences>,
     /// Indicates the method used to create the customer profile.
-    pub creation_source: Option<String>,
+    pub creation_source: Option<CustomerCreationSource>,
     /// The IDs of customer groups the customer belongs to.
     pub group_ids: Option<Vec<String>>,
     /// The IDs of segments the customer belongs to.

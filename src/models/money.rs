@@ -1,9 +1,11 @@
 //! Model struct for Money type
 
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
+
+use super::enums::Currency;
 
 /// This is a model struct for Money type.
-#[derive(Clone, Debug, Default, Deserialize, Hash, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
 pub struct Money {
     /// The amount of money, in the smallest denomination of the currency indicated by `currency`.
     /// For example, when `currency` is `USD`, `amount` is in cents. Monetary amounts can be
@@ -12,5 +14,5 @@ pub struct Money {
     pub amount: i32,
     /// Indicates the associated currency for an amount of money. Values correspond to [ISO
     /// 4217](https://wikipedia.org/wiki/ISO_4217).
-    pub currency: String,
+    pub currency: Currency,
 }

@@ -6,10 +6,10 @@ use serde::Deserialize;
 use super::errors::Error;
 use super::Customer;
 
-#[derive(Debug, Default, Deserialize, Hash, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, PartialEq)]
 pub struct CreateCustomerResponse {
     /// Any errors that occurred during the request.
-    pub errors: Vec<Error>,
+    pub errors: Option<Vec<Error>>,
     /// Represents a Square customer profile in the Customer Directory of a Square seller.
     pub customer: Customer,
 }
