@@ -66,7 +66,10 @@ impl ToString for ListPaymentsParameters {
         }
 
         if let Some(sort_order) = &self.sort_order {
-            params.push(format!("sort_order={}", serde_json::to_string(sort_order).unwrap()));
+            params.push(format!(
+                "sort_order={}",
+                serde_json::to_string(sort_order).unwrap()
+            ));
         }
 
         if let Some(cursor) = &self.cursor {

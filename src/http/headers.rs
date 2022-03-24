@@ -31,7 +31,8 @@ impl Headers {
 
     /// Adds a request header to the collection
     pub fn insert(&mut self, header_name: &str, header_value: &str) -> Option<String> {
-        self.headers.insert(String::from(header_name), String::from(header_value))
+        self.headers
+            .insert(String::from(header_name), String::from(header_value))
     }
 
     /// The default authorization header is a Bearer token found in the `SQUARE_API_TOKEN`
@@ -57,10 +58,19 @@ impl Default for Headers {
     fn default() -> Self {
         let mut headers = HashMap::new();
 
-        headers.insert(String::from("Content-Type"), String::from("application/json"));
-        headers.insert(String::from("Square-Version"), String::from(DEFAULT_SQUARE_VERSION));
+        headers.insert(
+            String::from("Content-Type"),
+            String::from("application/json"),
+        );
+        headers.insert(
+            String::from("Square-Version"),
+            String::from(DEFAULT_SQUARE_VERSION),
+        );
         headers.insert(String::from("accept"), String::from("application/json"));
-        headers.insert(String::from("user-agent"), HttpClientConfiguration::default_user_agent());
+        headers.insert(
+            String::from("user-agent"),
+            HttpClientConfiguration::default_user_agent(),
+        );
         headers.insert(String::from("Authorization"), Self::default_authorization());
 
         Self { headers }
@@ -80,7 +90,10 @@ impl TryFrom<&Headers> for HeaderMap {
                 ApiError::new(&msg)
             })?;
             let header_value = HeaderValue::from_bytes(v.as_bytes()).map_err(|e| {
-                let msg = format!("Error generating {} header value for header {}: {}", v, k, e);
+                let msg = format!(
+                    "Error generating {} header value for header {}: {}",
+                    v, k, e
+                );
                 error!("{}", msg);
                 ApiError::new(&msg)
             })?;
