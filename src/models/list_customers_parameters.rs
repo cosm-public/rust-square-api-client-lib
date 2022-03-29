@@ -34,6 +34,15 @@ impl From<ListCustomersParameters> for String {
         list_customers_parameters.to_string()
     }
 }
+impl Default for ListCustomersParameters {
+    fn default() -> Self {
+        Self {
+            cursor: Default::default(),
+            sort_order: DEFAULT_SORT_ORDER,
+            sort_field: DEFAULT_SORT_CUSTOMER_FIELD,
+        }
+    }
+}
 
 impl ToString for ListCustomersParameters {
     fn to_string(&self) -> String {
@@ -48,10 +57,7 @@ impl ToString for ListCustomersParameters {
         }
 
         if self.sort_order != DEFAULT_SORT_ORDER {
-            params.push(format!(
-                "sort_order={}",
-                serde_json::to_string(&self.sort_order).unwrap()
-            ));
+            params.push(format!("sort_order={}", serde_json::to_string(&self.sort_order).unwrap()));
         }
 
         if params.is_empty() {

@@ -21,6 +21,8 @@ pub struct UpdateCustomerRequest {
     /// birthday on September 21 and `1998-09-21T00:00:00-00:00` represents a birthday on September
     /// 21, 1998. You can also specify this value in `YYYY-MM-DD` format.
     pub birthday: Option<String>,
+    /// An optional second ID used to associate the customer profile with an entity in another system.
+    pub reference_id: Option<String>,
     /// Represents the tax ID associated with a [customer profile]($m/Customer). The corresponding
     /// `tax_ids` field is available only for customers of sellers in EU countries or the United
     /// Kingdom. For more information, see [Customer tax

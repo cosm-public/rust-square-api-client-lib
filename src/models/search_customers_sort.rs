@@ -1,6 +1,6 @@
 //! Model struct for SearchCustomersSort type
 
-use crate::models::enums::{SearchCustomersSortField, SortOrder};
+use crate::models::enums::{SortCustomersField, SortOrder};
 use serde::Serialize;
 /// Sorting criteria for a `SearchCustomers` request.
 ///
@@ -16,7 +16,7 @@ pub struct SearchCustomersSort {
     /// field in `DateTimeFilter`, `SearchCustomers` returns an error.
     ///
     /// Default: `CREATED_AT`.
-    pub sort_field: Option<SearchCustomersSortField>,
+    pub sort_field: Option<SortCustomersField>,
     /// The chronological order in which results are returned. Defaults to DESC.
     pub sort_order: Option<SortOrder>,
 }
