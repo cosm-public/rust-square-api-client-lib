@@ -4,13 +4,17 @@ use serde::{Deserialize, Serialize};
 
 use super::enums::Country;
 
-/// This is a model struct for Address type.
+/// Represents a postal address in a country.
+///
+/// For more information, see [Working with
+/// Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses).
 #[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
 pub struct Address {
-    /// The first line of the address. Fields that start with `address_line` provide the address's
-    /// most specific details, like street number, street name, and building name. They do *not*
-    /// provide less specific details like city, state/province, or country (these details are
-    /// provided in other fields).
+    /// The first line of the address.
+    ///
+    /// Fields that start with `address_line` provide the address's most specific details, like
+    /// street number, street name, and building name. They do not provide less specific details
+    /// like city, state/province, or country (these details are provided in other fields).
     pub address_line_1: Option<String>,
     /// The second line of the address, if any.
     pub address_line_2: Option<String>,
@@ -28,7 +32,6 @@ pub struct Address {
     /// The address's postal code. For a full list of field meanings by country, see [Working with
     /// Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses).
     pub postal_code: Option<String>,
-    /// Indicates the country associated with another entity, such as a business. Values are in [ISO
-    /// 3166-1-alpha-2 format](http://www.iso.org/iso/home/standards/country_codes.htm).
+    /// The address's country, in the two-letter format of ISO 3166. For example, `US` or `FR`.
     pub country: Option<Country>,
 }

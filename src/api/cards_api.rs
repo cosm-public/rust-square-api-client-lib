@@ -4,9 +4,9 @@
 //! Developers can integrate the Cards API in their application to let Square sellers:
 //!
 //! * Save a card that can be charged by any Square seller who uses your application. Your
-//! application specifies the organization access token in the CreateCard request.
+//! application specifies the organization access token in the `CreateCard` request.
 //! * Save a card that can be charged by a single Square seller. Your application specifies the
-//! access token of the specific seller account in the CreateCard request.
+//! access token of the specific seller account in the `CreateCard` request.
 //!
 //! The Cards API also supports other endpoints to manage the cards.
 
@@ -48,6 +48,7 @@ impl CardsApi {
     }
 
     /// Disables the card, preventing any further updates or charges.
+    ///
     /// Disabling an already disabled card is allowed but has no effect.
     pub async fn disable_card(&self, card_id: &str) -> Result<DisableCardResponse, ApiError> {
         let url = format!("{}/{}/disable", &self.url(), card_id);
@@ -57,6 +58,7 @@ impl CardsApi {
     }
 
     /// Retrieves a list of cards owned by the account making the request.
+    ///
     /// A max of 25 cards will be returned.
     pub async fn list_cards(
         &self,

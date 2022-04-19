@@ -1,3 +1,9 @@
+//! Create and manage customer profiles and sync CRM systems with Square.
+//!
+//! The Customers API enables you to create and manage customer profiles, as well as search for
+//! customers based on various criteria (including customer group membership). You can also use the
+//! API to sync contacts between your CRM system and Square.
+
 use crate::{
     config::Configuration,
     http::client::HttpClient,
@@ -13,6 +19,7 @@ use super::BaseApi;
 
 const DEFAULT_URI: &str = "/customers";
 
+/// Create and manage [Customer] profiles and sync CRM systems with Square.
 pub struct CustomersApi {
     config: Configuration,
     client: HttpClient,
@@ -23,9 +30,15 @@ impl CustomersApi {
         Self { config, client }
     }
 
-    /// Create a [customer]:
+    /// Creates a new [Customer] for a business.
+    ///
     /// You must provide at least one of the following values in your request to this endpoint:
-    /// email_address, family_name, given_name, phone_number
+    ///
+    /// * `given_name`
+    /// * `family_name`
+    /// * `company_name`
+    /// * `email_address`
+    /// * `phone_number`
     pub async fn create_customer(
         &self,
         body: &CreateCustomerRequest,
@@ -35,7 +48,7 @@ impl CustomersApi {
         self.handle_response(response).await
     }
 
-    /// Retrieves a [Customer] by ID.
+    /// Returns details for a single [Customer].
     pub async fn retrieve_customer(
         &self,
         customer_id: &str,
@@ -46,7 +59,15 @@ impl CustomersApi {
         self.handle_response(response).await
     }
 
-    /// Deletes a [Customer] by ID.
+    /// Deletes a [Customer] profile from a business.
+    ///
+    /// This operation also unlinks any associated cards on file.
+    ///
+    /// As a best practice, you should include the version field in the request to enable optimistic
+    /// concurrency control. The value must be set to the current version of the customer profile.
+    ///
+    /// To delete a customer profile that was created by merging existing profiles, you must use the
+    /// ID of the newly created profile.
     pub async fn delete_customer(
         &self,
         customer_id: &str,
@@ -57,12 +78,16 @@ impl CustomersApi {
         self.handle_response(response).await
     }
 
-    /// Search Customers
-    /// Searches the customer profiles associated with a Square account using a supported query filter.
-    /// Calling SearchCustomers without any explicit query filter returns all customer profiles ordered
-    /// alphabetically based on given_name and family_name.
+    /// Searches the [Customer] profiles associated with a Square account using a supported query
+    /// filter.
     ///
-    /// We can search customers on: email_address, phone_number, name and customer_id.
+    /// Calling `SearchCustomers` without any explicit query filter returns all customer profiles
+    /// ordered alphabetically based on `given_name` and `family_name`.
+    ///
+    /// Under normal operating conditions, newly created or updated customer profiles become
+    /// available for the search operation in well under 30 seconds. Occasionally, propagation of
+    /// the new or updated profiles can take closer to one minute or longer, especially during
+    /// network incidents and outages.
     pub async fn search_customers(
         &self,
         body: &SearchCustomersRequest,
@@ -73,8 +98,12 @@ impl CustomersApi {
         self.handle_response(response).await
     }
 
-    /// Retrieves a list of customers owned by the account making the request.
-    /// A max of 25 customers will be returned.
+    /// Lists [Customer] profiles associated with a Square account.
+    ///
+    /// Under normal operating conditions, newly created or updated customer profiles become
+    /// available for the listing operation in well under 30 seconds. Occasionally, propagation of
+    /// the new or updated profiles can take closer to one minute or longer, especially during
+    /// network incidents and outages.
     pub async fn list_customers(
         &self,
         params: &ListCustomersParameters,
@@ -85,8 +114,22 @@ impl CustomersApi {
         self.handle_response(response).await
     }
 
-    /// Updates Customer
-    /// Currently the accepted fields for update are: email_address, phone_number, name
+    /// Updates a [Customer] profile.
+    ///
+    /// To change an attribute, specify the new value. To remove an attribute, specify the value as
+    /// an empty string or empty object.
+    ///
+    /// As a best practice, you should include the `version` field in the request to enable
+    /// [optimistic
+    /// concurrency](https://developer.squareup.com/docs/working-with-apis/optimistic-concurrency)
+    /// control. The value must be set to the current version of the customer profile.
+    ///
+    /// To update a customer profile that was created by merging existing profiles, you must use the
+    /// ID of the newly created profile.
+    ///
+    /// You cannot use this endpoint to change cards on file. To make changes, use the [Cards
+    /// API](https://developer.squareup.com/reference/square/cards-api) or [Gift Cards
+    /// API](https://developer.squareup.com/reference/square/giftcards-api).
     pub async fn update_customer(
         &self,
         customer_id: &str,

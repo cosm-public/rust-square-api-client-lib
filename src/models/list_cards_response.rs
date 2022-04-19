@@ -10,9 +10,9 @@ pub struct ListCardsResponse {
     /// Information on errors encountered during the request.
     pub errors: Option<Vec<Error>>,
     /// The requested list of `Card`s.
-    pub cards: Vec<Card>,
+    pub cards: Option<Vec<Card>>,
     /// The pagination cursor to be used in a subsequent request. If empty, this is the final
     /// response. See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for
     /// more information.
-    pub cursor: String,
+    pub cursor: Option<String>,
 }

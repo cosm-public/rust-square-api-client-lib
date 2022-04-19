@@ -1,34 +1,35 @@
 //! Model struct for Customer type
 
-/// This is a model struct for Customer type.
 use serde::{Deserialize, Serialize};
 
 use super::{
     enums::CustomerCreationSource, Address, Card, CustomerPreferences, CustomerTaxIds, DateTime,
 };
 
+/// Represents a Square customer profile in the Customer Directory of a Square seller.
 #[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
 pub struct Customer {
     /// A unique Square-assigned ID for the customer profile. If you need this ID for an API
     /// request, use the ID returned when you created the customer profile or call the
-    /// [SearchCustomers]($e/Customers/SearchCustomers) or
-    /// [ListCustomers]($e/Customers/ListCustomers) endpoint.
+    /// `SearchCustomers` or `ListCustomers` endpoint.
     pub id: Option<String>,
     /// The timestamp when the customer profile was created.
     pub created_at: Option<DateTime>,
     /// The timestamp when the customer profile was last updated.
     pub updated_at: Option<DateTime>,
     /// Payment details of the credit, debit, and gift cards stored on file for the customer
-    /// profile. DEPRECATED at version 2021-06-16. Replaced by calling
-    /// [ListCards]($e/Cards/ListCards) (for credit and debit cards on file) or
-    /// [ListGiftCards]($e/GiftCards/ListGiftCards) (for gift cards on file) and including the
+    /// profile.
+    ///
+    /// DEPRECATED at version 2021-06-16. Replaced by calling `ListCards` (for credit and debit
+    /// cards on file) or `ListGiftCards` (for gift cards on file) and including the
     /// `customer_id` query parameter. For more information, see [Migrate to the Cards API and Gift
     /// Cards
     /// API](https://developer.squareup.com/docs/customers-api/use-the-api/integrate-with-other-services#migrate-customer-cards).
+    #[deprecated]
     pub cards: Option<Vec<Card>>,
-    /// The given (i.e., first) name associated with the customer profile.
+    /// The given name (that is, the first name) associated with the customer profile.
     pub given_name: Option<String>,
-    /// The family (i.e., last) name associated with the customer profile.
+    /// The family name (that is, the last name) associated with the customer profile.
     pub family_name: Option<String>,
     /// A nickname for the customer profile.
     pub nickname: Option<String>,
@@ -36,10 +37,10 @@ pub struct Customer {
     pub company_name: Option<String>,
     /// The email address associated with the customer profile.
     pub email_address: Option<String>,
-    /// Represents a postal address in a country. For more information, see [Working with
-    /// Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses).
+    /// The physical address associated with the customer profile.
     pub address: Option<Address>,
-    /// The 11-digit phone number associated with the customer profile.
+    /// The phone number associated with the customer profile. A phone number can contain 9–16
+    /// digits, with an optional `+` prefix.
     pub phone_number: Option<String>,
     /// The birthday associated with the customer profile, in RFC 3339 format. The year is optional.
     /// The timezone and time are not allowed. For example, `0000-09-21T00:00:00-00:00` represents a
@@ -51,9 +52,9 @@ pub struct Customer {
     pub reference_id: Option<String>,
     /// A custom note associated with the customer profile.
     pub note: Option<String>,
-    /// Represents communication preferences for the customer profile.
+    /// Represents general customer preferences.
     pub preferences: Option<CustomerPreferences>,
-    /// Indicates the method used to create the customer profile.
+    /// The method used to create the customer profile.
     pub creation_source: Option<CustomerCreationSource>,
     /// The IDs of customer groups the customer belongs to.
     pub group_ids: Option<Vec<String>>,

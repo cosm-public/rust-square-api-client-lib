@@ -1,18 +1,14 @@
 //! Represents a collection of Request Headers
 
-use std::{collections::HashMap, env};
-
-use log::{error, warn};
-use reqwest::header::{HeaderMap, HeaderName, HeaderValue};
-
-use crate::models::errors::ApiError;
-
 use super::client::HttpClientConfiguration;
-
-const DEFAULT_SQUARE_VERSION: &str = "2022-02-16";
+use crate::config;
+use crate::models::errors::ApiError;
+use log::error;
+use reqwest::header::{HeaderMap, HeaderName, HeaderValue};
+use std::collections::HashMap;
 
 /// A collection of Request Headers
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct Headers {
     /// The request headers as key-value pairs
     pub headers: HashMap<String, String>,
@@ -33,18 +29,6 @@ impl Headers {
     pub fn insert(&mut self, header_name: &str, header_value: &str) -> Option<String> {
         self.headers.insert(String::from(header_name), String::from(header_value))
     }
-
-    /// The default authorization header is a Bearer token found in the `SQUARE_API_TOKEN`
-    /// environment variable
-    pub(crate) fn default_authorization() -> String {
-        format!(
-            "Bearer {}",
-            env::var("SQUARE_API_TOKEN").unwrap_or_else(|_| {
-                warn!("No SQUARE_API_TOKEN environment variable found");
-                String::new()
-            })
-        )
-    }
 }
 
 impl Default for Headers {
@@ -58,10 +42,11 @@ impl Default for Headers {
         let mut headers = HashMap::new();
 
         headers.insert(String::from("Content-Type"), String::from("application/json"));
-        headers.insert(String::from("Square-Version"), String::from(DEFAULT_SQUARE_VERSION));
+        headers
+            .insert(String::from("Square-Version"), String::from(config::DEFAULT_SQUARE_VERSION));
         headers.insert(String::from("accept"), String::from("application/json"));
         headers.insert(String::from("user-agent"), HttpClientConfiguration::default_user_agent());
-        headers.insert(String::from("Authorization"), Self::default_authorization());
+        headers.insert(String::from("Authorization"), config::default_authorization());
 
         Self { headers }
     }
@@ -88,5 +73,60 @@ impl TryFrom<&Headers> for HeaderMap {
         }
 
         Ok(header_map)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::config;
+    use crate::http::client::HttpClientConfiguration;
+    use crate::http::Headers;
+    use reqwest::header::HeaderMap;
+    use std::collections::HashMap;
+
+    #[test]
+    fn headers_default() {
+        let headers = Headers::default();
+        assert_eq!(headers.headers.get("Content-Type"), Some(&String::from("application/json")));
+        assert_eq!(headers.headers.get("Square-Version"), Some(&String::from("2022-02-16")));
+        assert_eq!(headers.headers.get("accept"), Some(&String::from("application/json")));
+        assert_eq!(
+            headers.headers.get("user-agent"),
+            Some(&HttpClientConfiguration::default_user_agent())
+        );
+        assert_eq!(headers.headers.get("Authorization"), Some(&config::default_authorization()));
+        assert!(headers.has_user_agent());
+    }
+
+    #[test]
+    fn headers_has_user_agent() {
+        let mut headers = Headers::default();
+        headers.headers = HashMap::new();
+        assert!(!headers.has_user_agent());
+        headers.set_user_agent("some-user-agent");
+        assert!(headers.has_user_agent());
+    }
+
+    #[test]
+    fn headers_set_user_agent() {
+        let mut headers = Headers::default();
+        assert!(!(headers.headers.get("user-agent") == Some(&String::from("some-user-agent"))));
+        headers.set_user_agent("some-user-agent");
+        assert_eq!(Some(&String::from("some-user-agent")), headers.headers.get("user-agent"));
+    }
+
+    #[test]
+    fn try_from_ok() {
+        assert!(HeaderMap::try_from(&Headers::default()).is_ok());
+    }
+
+    #[test]
+    fn try_from_error() {
+        let mut headers = Headers::default();
+        headers.headers = HashMap::new();
+        headers
+            .headers
+            .insert(String::from("some_faulty_code\u{1234}"), String::from("some_value"));
+        assert!(HeaderMap::try_from(&headers).is_err());
     }
 }

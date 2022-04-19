@@ -4,7 +4,10 @@ use serde::{Deserialize, Serialize};
 
 use crate::models::enums::{ErrorCategory, ErrorCode};
 
-/// This is a model struct for Error type.
+/// Represents an error encountered during a request to the Connect API.
+///
+/// See [Handling errors](https://developer.squareup.com/docs/build-basics/handling-errors) for more
+/// information.
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 pub struct Error {
     /// Indicates which high-level category of error has occurred during a request to the Connect

@@ -2,7 +2,7 @@
 
 use serde::{Deserialize, Serialize};
 
-/// This is a model struct for CustomerPreferences type
+/// Represents communication preferences for the customer profile.
 #[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
 pub struct CustomerPreferences {
     /// Indicates whether the customer has unsubscribed from marketing campaign emails. A value of

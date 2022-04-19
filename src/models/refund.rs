@@ -4,38 +4,30 @@ use serde::{Deserialize, Serialize};
 
 use super::{enums::RefundStatus, AdditionalRecipient, DateTime, Money};
 
-/// This is a model struct for Refund type.
+/// Represents a refund processed for a Square transaction.
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 pub struct Refund {
-    /// The refund's unique ID.
+    /// **Required** The refund's unique ID.
     pub id: String,
-    /// The ID of the refund's associated location.
+    /// **Required** The ID of the refund's associated location.
     pub location_id: String,
-    /// The ID of the transaction that the refunded tender is part of.
+    /// **Required** The ID of the transaction that the refunded tender is part of.
     pub transaction_id: String,
-    /// The ID of the refunded tender.
+    /// **Required** The ID of the refunded tender.
     pub tender_id: String,
-    /// The timestamp for when the refund was created.
-    pub created_at: DateTime,
-    /// The reason for the refund being issued.
+    /// **Read only** The timestamp for when the refund was created.
+    pub created_at: Option<DateTime>,
+    /// **Required** The reason for the refund being issued.
     pub reason: String,
-    /// Represents an amount of money. `Money` fields can be signed or unsigned. Fields that do not
-    /// explicitly define whether they are signed or unsigned are considered unsigned and can only
-    /// hold positive amounts. For signed fields, the sign of the value indicates the purpose of the
-    /// money transfer. See [Working with Monetary
-    /// Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts) for
-    /// more information.
+    /// **Required** The amount of money refunded to the buyer.
     pub amount_money: Money,
-    /// Indicates a refund's current status.
+    /// **Required** The current status of the refund (`PENDING`, `APPROVED`, `REJECTED`, or
+    /// `FAILED`).
     pub status: RefundStatus,
-    /// Represents an amount of money. `Money` fields can be signed or unsigned. Fields that do not
-    /// explicitly define whether they are signed or unsigned are considered unsigned and can only
-    /// hold positive amounts. For signed fields, the sign of the value indicates the purpose of the
-    /// money transfer. See [Working with Monetary
-    /// Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts) for
-    /// more information.
-    pub processing_fee_money: Money,
+    /// The amount of Square processing fee money refunded to the merchant.
+    pub processing_fee_money: Option<Money>,
     /// Additional recipients (other than the merchant) receiving a portion of this refund. For
     /// example, fees assessed on a refund of a purchase by a third party integration.
-    pub additional_recipients: Vec<AdditionalRecipient>,
+    #[deprecated]
+    pub additional_recipients: Option<Vec<AdditionalRecipient>>,
 }
