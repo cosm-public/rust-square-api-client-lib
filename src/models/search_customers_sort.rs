@@ -5,7 +5,7 @@ use serde::Serialize;
 /// Sorting criteria for a `SearchCustomers` request.
 ///
 /// Results can only be sorted by a timestamp field.
-#[derive(Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, PartialEq, Serialize)]
 pub struct SearchCustomersSort {
     /// The field to sort by.
     ///

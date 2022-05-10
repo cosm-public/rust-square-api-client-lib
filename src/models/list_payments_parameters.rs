@@ -3,6 +3,7 @@
 use super::{enums::SortOrder, DateTime};
 
 /// This is a model struct for ListPaymentsParameters (query parameters)
+#[derive(Clone, Debug, Default)]
 pub struct ListPaymentsParameters {
     /// The timestamp for the beginning of the reporting period. Inclusive.
     ///

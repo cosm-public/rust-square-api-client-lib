@@ -5,7 +5,7 @@ use serde::Deserialize;
 use super::{errors::Error, Customer};
 
 /// This is a model struct for SearchCustomersResponse type
-#[derive(Debug, Default, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, PartialEq)]
 pub struct SearchCustomersResponse {
     /// A list of [Customer] objects that match the query conditions. The list is populated only if
     /// `return_entries` is set to `false` in the request.

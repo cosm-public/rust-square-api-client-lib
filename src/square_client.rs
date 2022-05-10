@@ -13,7 +13,7 @@ pub struct SquareClient {
     // pub bookings: BookingsApi,
     pub cards: CardsApi,
     // pub cash_drawers: CashDrawersApi,
-    // pub catalog: CatalogApi,
+    pub catalog: CatalogApi,
     pub customers: CustomersApi,
     // pub customer_groups: CustomerGroupsApi,
     // pub customer_segments: CustomerSegmentsApi,
@@ -54,6 +54,7 @@ impl SquareClient {
 
         let this: SquareClient = Self {
             cards: CardsApi::new(config.clone(), http_client.clone()),
+            catalog: CatalogApi::new(config.clone(), http_client.clone()),
             customers: CustomersApi::new(config.clone(), http_client.clone()),
             orders: OrdersApi::new(config.clone(), http_client.clone()),
             payments: PaymentsApi::new(config, http_client),

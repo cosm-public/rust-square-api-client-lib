@@ -9,7 +9,7 @@ use super::{
 /// Filtering criteria to use for a `SearchCustomers` request.
 ///
 /// Multiple filters are ANDed together.
-#[derive(Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, PartialEq, Serialize)]
 pub struct SearchCustomersFilter {
     /// Filter by [ email addresses]
     pub email_address: Option<SearchCustomersTextFilter>,

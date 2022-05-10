@@ -5,7 +5,7 @@ use serde::Serialize;
 use super::{SearchCustomersFilter, SearchCustomersSort};
 
 /// Contains query criteria for the search.
-#[derive(Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, PartialEq, Serialize)]
 pub struct SearchCustomersQuery {
     /// Criteria to filter results by.
     pub filter: Option<SearchCustomersFilter>,

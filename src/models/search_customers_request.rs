@@ -5,7 +5,7 @@ use serde::Serialize;
 use super::SearchCustomersQuery;
 
 /// This is a model struct for SearchCustomersRequest type.
-#[derive(Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, PartialEq, Serialize)]
 pub struct SearchCustomersRequest {
     /// A pagination cursor returned by a previous call to this endpoint. Provide this cursor to
     /// retrieve the next set of results for your original query. For more information, see
