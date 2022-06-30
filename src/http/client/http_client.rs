@@ -107,6 +107,16 @@ impl HttpClient {
         Ok(HttpResponse::new(response))
     }
 
+    /// Sends an HTTP POST without any body
+    pub async fn empty_post(&self, url: &str) -> Result<HttpResponse, ApiError> {
+        let response = self.client.post(url).send().await.map_err(|e| {
+            let msg = format!("Error posting to {}: {}", url, e);
+            error!("{}", msg);
+            ApiError::new(&msg)
+        })?;
+        Ok(HttpResponse::new(response))
+    }
+
     /// Sends an HTTP PUT
     pub async fn put<T: Serialize>(&self, url: &str, body: &T) -> Result<HttpResponse, ApiError> {
         let response = self.retry_client.put(url).json(body).send().await.map_err(|e| {

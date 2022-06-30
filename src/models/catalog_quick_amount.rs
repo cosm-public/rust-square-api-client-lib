@@ -8,8 +8,7 @@ use super::{enums::CatalogQuickAmountType, Money};
 #[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
 pub struct CatalogQuickAmount {
     /// Represents the type of the Quick Amount.
-    #[serde(rename = "type")]
-    pub catalog_quick_amount_type: CatalogQuickAmountType,
+    pub r#type: CatalogQuickAmountType,
     /// Represents the actual amount of the Quick Amount with Money type.
     pub amount: Money,
     /// Describes the ranking of the Quick Amount provided by machine learning model, in the range

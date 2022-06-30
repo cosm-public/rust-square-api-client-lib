@@ -25,7 +25,7 @@ pub struct SquareClient {
     // pub inventory: InventoryApi,
     // pub invoices: InvoicesApi,
     // pub labor: LaborApi,
-    // pub locations: LocationsApi,
+    pub locations: LocationsApi,
     // pub checkout: CheckoutApi,
     // pub transactions: TransactionsApi,
     // pub loyalty: LoyaltyApi,
@@ -56,6 +56,7 @@ impl SquareClient {
             cards: CardsApi::new(config.clone(), http_client.clone()),
             catalog: CatalogApi::new(config.clone(), http_client.clone()),
             customers: CustomersApi::new(config.clone(), http_client.clone()),
+            locations: LocationsApi::new(config.clone(), http_client.clone()),
             orders: OrdersApi::new(config.clone(), http_client.clone()),
             payments: PaymentsApi::new(config, http_client),
         };

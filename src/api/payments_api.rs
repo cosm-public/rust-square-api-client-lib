@@ -26,8 +26,6 @@ use crate::{
     },
 };
 
-use super::BaseApi;
-
 const DEFAULT_URI: &str = "/payments";
 
 /// The Payments API lets developers take and manage payments.
@@ -53,7 +51,7 @@ impl PaymentsApi {
         let url = format!("{}/{}/cancel", &self.url(), payment_id);
         let response = self.client.post::<Option<()>>(&url, &None).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Cancels (voids) a payment identified by the idempotency key that is specified in the
@@ -75,7 +73,7 @@ impl PaymentsApi {
         let url = format!("{}/cancel", &self.url());
         let response = self.client.post(&url, body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Completes (captures) a payment.
@@ -91,7 +89,7 @@ impl PaymentsApi {
         let url = format!("{}/{}/complete", &self.url(), payment_id);
         let response = self.client.post(&url, body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Creates a payment using the provided source.
@@ -107,7 +105,7 @@ impl PaymentsApi {
     ) -> Result<CreatePaymentResponse, ApiError> {
         let response = self.client.post(&self.url(), body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Retrieves details for a specific payment
@@ -115,7 +113,7 @@ impl PaymentsApi {
         let url = format!("{}/{}", &self.url(), payment_id);
         let response = self.client.get(&url).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Retrieves a list of payments taken by the account making the request.
@@ -131,7 +129,7 @@ impl PaymentsApi {
         let url = format!("{}{}", &self.url(), params.to_query_string());
         let response = self.client.get(&url).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Updates a payment with the APPROVED status.
@@ -145,7 +143,7 @@ impl PaymentsApi {
         let url = format!("{}/{}", &self.url(), payment_id);
         let response = self.client.put(&url, &body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Constructs the basic entity URL including domain and entity path. Any additional path
@@ -154,5 +152,3 @@ impl PaymentsApi {
         format!("{}{}", &self.config.get_base_url(), DEFAULT_URI)
     }
 }
-
-impl BaseApi for PaymentsApi {}

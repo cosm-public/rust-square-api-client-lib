@@ -34,8 +34,7 @@ pub struct Tender {
     /// the ID of the associated customer.
     pub customer_id: Option<String>,
     /// **Required** The type of tender, such as `CARD` or `CASH`.
-    #[serde(rename = "type")]
-    pub tender_type: TenderType,
+    pub r#type: TenderType,
     /// The details of the card tender.
     ///
     /// This value is present only if the value of `type` is `CARD`.

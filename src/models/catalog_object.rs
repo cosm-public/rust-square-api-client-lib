@@ -31,8 +31,7 @@ use super::{
 pub struct CatalogObject {
     /// The type of this object. Each object type has expected properties expressed in a structured
     /// format within its corresponding `*_data` field below.
-    #[serde(rename = "type")]
-    pub catalog_object_type: CatalogObjectType,
+    pub r#type: CatalogObjectType,
     /// An identifier to reference this object in the catalog. When a new `CatalogObject` is
     /// inserted, the client should set the id to a temporary identifier starting with a "`#`"
     /// character. Other objects being inserted or updated within the same request may use this

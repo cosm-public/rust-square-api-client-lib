@@ -21,4 +21,6 @@ pub struct CatalogModifier {
     /// The IDs of images associated with this `CatalogModifier` instance. Currently these images
     /// are not displayed by Square, but are free to be displayed in 3rd party applications.
     pub image_ids: Option<Vec<String>>,
+    /// If `true`, this `CatalogModifier` should be selected by default for this `CatalogItem`.
+    pub on_by_default: Option<bool>,
 }

@@ -25,8 +25,7 @@ pub struct OrderLineItemTax {
     /// The tax's name.
     pub name: Option<String>,
     /// Indicates the calculation method used to apply the tax.
-    #[serde(rename = "type")]
-    pub order_line_item_tax_type: Option<OrderLineItemTaxType>,
+    pub r#type: Option<OrderLineItemTaxType>,
     /// The percentage of the tax, as a string representation of a decimal number. For example, a
     /// value of "7.25" corresponds to a percentage of 7.25%.
     pub percentage: Option<String>,

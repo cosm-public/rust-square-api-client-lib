@@ -22,8 +22,7 @@ use super::{
 #[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
 pub struct CatalogCustomAttributeDefinition {
     /// The type of this custom attribute. Cannot be modified after creation. Required.
-    #[serde(rename = "type")]
-    pub catalog_custom_attribute_definition_type: CatalogCustomAttributeDefinitionType,
+    pub r#type: CatalogCustomAttributeDefinitionType,
     /// The name of this definition for API and seller-facing UI purposes. The name must be unique
     /// within the (merchant, application) pair. Required. May not be empty and may not exceed 255
     /// characters. Can be modified after creation.

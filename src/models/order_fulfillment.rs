@@ -20,8 +20,7 @@ pub struct OrderFulfillment {
     /// A unique ID that identifies the fulfillment only within this order.
     pub uid: Option<String>,
     /// The type of the fulfillment.
-    #[serde(rename = "type")]
-    pub order_fulfillment_type: Option<OrderFulfillmentType>,
+    pub r#type: Option<OrderFulfillmentType>,
     /// The state of the fulfillment.
     pub state: Option<OrderFulfillmentState>,
     /// Describes what order line items this fulfillment applies to. It can be ALL or ENTRY_LIST

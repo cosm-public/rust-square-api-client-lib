@@ -15,8 +15,6 @@ use crate::{
     },
 };
 
-use super::BaseApi;
-
 const DEFAULT_URI: &str = "/customers";
 
 /// Create and manage [Customer] profiles and sync CRM systems with Square.
@@ -45,7 +43,7 @@ impl CustomersApi {
     ) -> Result<CreateCustomerResponse, ApiError> {
         let response = self.client.post(&self.url(), body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Returns details for a single [Customer].
@@ -56,7 +54,7 @@ impl CustomersApi {
         let url = format!("{}/{}", &self.url(), customer_id);
         let response = self.client.get(&url).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Deletes a [Customer] profile from a business.
@@ -75,7 +73,7 @@ impl CustomersApi {
         let url = format!("{}/{}", &self.url(), customer_id);
         let response = self.client.delete(&url).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Searches the [Customer] profiles associated with a Square account using a supported query
@@ -95,7 +93,7 @@ impl CustomersApi {
         let url = format!("{}/search", &self.url());
         let response = self.client.post(&url, body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Lists [Customer] profiles associated with a Square account.
@@ -111,7 +109,7 @@ impl CustomersApi {
         let url = format!("{}{}", &self.url(), params.to_query_string());
         let response = self.client.get(&url).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Updates a [Customer] profile.
@@ -138,12 +136,10 @@ impl CustomersApi {
         let url = format!("{}/{}", &self.url(), customer_id);
         let response = self.client.put(&url, body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     fn url(&self) -> String {
         format!("{}{}", &self.config.get_base_url(), DEFAULT_URI)
     }
 }
-
-impl BaseApi for CustomersApi {}

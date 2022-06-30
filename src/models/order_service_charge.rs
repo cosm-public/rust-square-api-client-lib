@@ -84,6 +84,5 @@ pub struct OrderServiceCharge {
     /// [Metadata](https://developer.squareup.com/docs/build-basics/metadata).
     pub metadata: Option<HashMap<String, String>>,
     /// **Read only** The type of the service charge.
-    #[serde(rename = "type")]
-    pub order_service_charge_type: Option<OrderServiceChargeType>,
+    pub r#type: Option<OrderServiceChargeType>,
 }

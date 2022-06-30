@@ -32,6 +32,5 @@ pub struct MeasurementUnit {
     /// Represents a standard unit of time.
     pub time_unit: Option<MeasurementUnitTime>,
     /// Represents the type of the measurement unit.
-    #[serde(rename = "type")]
-    pub measurement_unit_type: Option<MeasurementUnitUnitType>,
+    pub r#type: Option<MeasurementUnitUnitType>,
 }

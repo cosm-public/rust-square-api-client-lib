@@ -23,8 +23,6 @@ use crate::{
     },
 };
 
-use super::BaseApi;
-
 const DEFAULT_URI: &str = "/orders";
 
 /// Get sales data for a Square seller, itemize payments, push orders to POS, and more.
@@ -52,7 +50,7 @@ impl OrdersApi {
     ) -> Result<CreateOrderResponse, ApiError> {
         let response = self.client.post(&self.url(), body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Retrieves a set of [orders](Order) by their IDs.
@@ -65,7 +63,7 @@ impl OrdersApi {
         let url = format!("{}/batch-retrieve", &self.url());
         let response = self.client.post(&url, body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Enables applications to preview order pricing without creating an order.
@@ -76,7 +74,7 @@ impl OrdersApi {
         let url = format!("{}/calculate", &self.url());
         let response = self.client.post(&url, body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Creates a new order, in the `DRAFT` state, by duplicating an existing order.
@@ -90,7 +88,7 @@ impl OrdersApi {
         let url = format!("{}/clone", &self.url());
         let response = self.client.post(&url, body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Search all orders for one or more locations.
@@ -116,7 +114,7 @@ impl OrdersApi {
         let url = format!("{}/search", &self.url());
         let response = self.client.post(&url, body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Retrieves an [Order] by ID.
@@ -124,7 +122,7 @@ impl OrdersApi {
         let url = format!("{}/{}", &self.url(), order_id);
         let response = self.client.get(&url).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Updates an open [Order] by adding, replacing, or deleting fields.
@@ -150,7 +148,7 @@ impl OrdersApi {
         let url = format!("{}/{}", &self.url(), order_id);
         let response = self.client.put(&url, body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Pay for an [Order] using one or more approved [Payment]s or settle an order with a total of
@@ -176,7 +174,7 @@ impl OrdersApi {
         let url = format!("{}/{}/pay", &self.url(), order_id);
         let response = self.client.post(&url, body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Constructs the basic entity URL including domain and entity path. Any additional path
@@ -185,5 +183,3 @@ impl OrdersApi {
         format!("{}{}", &self.config.get_base_url(), DEFAULT_URI)
     }
 }
-
-impl BaseApi for OrdersApi {}

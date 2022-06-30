@@ -11,8 +11,7 @@ use super::{enums::ExternalPaymentType, Money};
 #[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
 pub struct ExternalPaymentDetails {
     /// The type of external payment the seller received.
-    #[serde(rename = "type")]
-    pub external_payment_type: Option<ExternalPaymentType>,
+    pub r#type: Option<ExternalPaymentType>,
     /// A description of the external payment source. For example, "Food Delivery Service".
     pub source: Option<String>,
     /// An ID to associate the payment to its originating source.

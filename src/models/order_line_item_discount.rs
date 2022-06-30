@@ -28,8 +28,7 @@ pub struct OrderLineItemDiscount {
     ///
     /// Discounts that do not reference a catalog object ID must have a type of `FIXED_PERCENTAGE`
     /// or `FIXED_AMOUNT`.
-    #[serde(rename = "type")]
-    pub order_line_item_discount_type: Option<OrderLineItemDiscountType>,
+    pub r#type: Option<OrderLineItemDiscountType>,
     /// The percentage of the discount, as a string representation of a decimal number. A value of
     /// `7.25` corresponds to a percentage of 7.25%.
     ///

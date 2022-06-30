@@ -20,8 +20,6 @@ use crate::{
     },
 };
 
-use super::BaseApi;
-
 const DEFAULT_URI: &str = "/catalog";
 
 /// Programmatically catalogs a Square seller’s products for sale and services for hire.
@@ -54,7 +52,7 @@ impl CatalogApi {
         let url = format!("{}/batch-delete", &self.url());
         let response = self.client.post(&url, body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Returns a set of objects based on the provided ID.
@@ -69,7 +67,7 @@ impl CatalogApi {
         let url = format!("{}/batch-retrieve", &self.url());
         let response = self.client.post(&url, body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Creates or updates up to 10,000 target objects based on the provided list of objects.
@@ -87,7 +85,7 @@ impl CatalogApi {
         let url = format!("{}/batch-upsert", &self.url());
         let response = self.client.post(&url, body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Uploads an image file to be represented by a [CatalogImage] object that can be linked to an
@@ -107,7 +105,7 @@ impl CatalogApi {
         let url = format!("{}/images", &self.url());
         let response = self.client.post_multipart(&url, body, image_filepath).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Uploads a new image file to replace the existing one in the specified [CatalogImage] object.
@@ -124,7 +122,7 @@ impl CatalogApi {
         let url = format!("{}/images/{}", &self.url(), image_id);
         let response = self.client.put_multipart(&url, body, image_filepath).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Retrieves information about the Square Catalog API, such as batch size limits that can be
@@ -133,7 +131,7 @@ impl CatalogApi {
         let url = format!("{}/info", &self.url());
         let response = self.client.get(&url).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Returns a list of all [CatalogObject]s of the specified types in the catalog.
@@ -152,7 +150,7 @@ impl CatalogApi {
         let url = format!("{}/list{}", &self.url(), params.to_query_string());
         let response = self.client.get(&url).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Creates or updates the target [CatalogObject].
@@ -163,7 +161,7 @@ impl CatalogApi {
         let url = format!("{}/object", &self.url());
         let response = self.client.post(&url, body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Deletes a single [CatalogObject] based on the provided ID and returns the set of
@@ -179,7 +177,7 @@ impl CatalogApi {
         let url = format!("{}/object/{}", &self.url(), object_id);
         let response = self.client.delete(&url).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Returns a single [CatalogItem] as a [CatalogObject] based on the provided ID.
@@ -195,7 +193,7 @@ impl CatalogApi {
         let url = format!("{}/object/{}{}", &self.url(), object_id, params.to_query_string());
         let response = self.client.get(&url).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Searches for [CatalogObject] of any type by matching supported search attribute values,
@@ -219,7 +217,7 @@ impl CatalogApi {
         let url = format!("{}/search", &self.url());
         let response = self.client.post(&url, body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Searches for catalog items or item variations by matching supported search attribute values,
@@ -242,7 +240,7 @@ impl CatalogApi {
         let url = format!("{}/search-catalog-items", &self.url());
         let response = self.client.post(&url, body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Updates the [CatalogModifierList] objects that apply to the targeted [CatalogItem] without
@@ -254,7 +252,7 @@ impl CatalogApi {
         let url = format!("{}/update-item-modifier-lists", &self.url());
         let response = self.client.post(&url, body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Updates the [CatalogTax] objects that apply to the targeted [CatalogItem] without having to
@@ -266,7 +264,7 @@ impl CatalogApi {
         let url = format!("{}/update-item-taxes", &self.url());
         let response = self.client.post(&url, body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Constructs the basic entity URL including domain and entity path. Any additional path
@@ -275,5 +273,3 @@ impl CatalogApi {
         format!("{}{}", &self.config.get_base_url(), DEFAULT_URI)
     }
 }
-
-impl BaseApi for CatalogApi {}

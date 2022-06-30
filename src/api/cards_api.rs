@@ -19,8 +19,6 @@ use crate::{
     },
 };
 
-use super::BaseApi;
-
 const DEFAULT_URI: &str = "/cards";
 
 /// Use the Cards API to save a credit or debit card on file.
@@ -44,7 +42,7 @@ impl CardsApi {
     ) -> Result<CreateCardResponse, ApiError> {
         let response = self.client.post(&self.url(), body).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Disables the card, preventing any further updates or charges.
@@ -52,9 +50,9 @@ impl CardsApi {
     /// Disabling an already disabled card is allowed but has no effect.
     pub async fn disable_card(&self, card_id: &str) -> Result<DisableCardResponse, ApiError> {
         let url = format!("{}/{}/disable", &self.url(), card_id);
-        let response = self.client.post(&url, &String::new()).await?;
+        let response = self.client.empty_post(&url).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Retrieves a list of cards owned by the account making the request.
@@ -67,7 +65,7 @@ impl CardsApi {
         let url = format!("{}{}", &self.url(), params.to_query_string());
         let response = self.client.get(&url).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Retrieves details for a specific Card.
@@ -75,7 +73,7 @@ impl CardsApi {
         let url = format!("{}/{}", &self.url(), card_id);
         let response = self.client.get(&url).await?;
 
-        self.handle_response(response).await
+        response.deserialize().await
     }
 
     /// Constructs the basic entity URL including domain and entity path. Any additional path
@@ -84,5 +82,3 @@ impl CardsApi {
         format!("{}{}", &self.config.get_base_url(), DEFAULT_URI)
     }
 }
-
-impl BaseApi for CardsApi {}

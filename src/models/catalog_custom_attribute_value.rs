@@ -18,8 +18,7 @@ pub struct CatalogCustomAttributeValue {
     /// **Read-only.** The id of the [CatalogCustomAttributeDefinition] this value belongs to.
     pub custom_attribute_definition_id: Option<String>,
     /// **Read-only.** A copy of type from the associated `CatalogCustomAttributeDefinition`.
-    #[serde(rename = "type")]
-    pub catalog_custom_attribute_definition_type: Option<CatalogCustomAttributeDefinitionType>,
+    pub r#type: Option<CatalogCustomAttributeDefinitionType>,
     /// Populated if `type` = `NUMBER`. Contains a string representation of a decimal number, using
     /// a `.` as the decimal separator.
     pub number_value: Option<String>,

@@ -8,7 +8,7 @@ use super::{errors::Error, Order};
 #[derive(Clone, Debug, Default, Deserialize, PartialEq)]
 pub struct BatchRetrieveOrdersResponse {
     /// The requested orders. This will omit any requested orders that do not exist.
-    pub orders: Vec<Order>,
+    pub orders: Option<Vec<Order>>,
     /// Any errors that occurred during the request.
     pub errors: Option<Vec<Error>>,
 }
