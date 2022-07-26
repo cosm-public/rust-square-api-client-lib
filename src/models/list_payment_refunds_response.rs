@@ -1,16 +1,16 @@
-//! Model struct for ListPaymentsResponse type
+//! Model struct for ListPaymentRefundsResponse type
 
 use serde::Deserialize;
 
-use super::{errors::Error, Payment};
+use super::{errors::Error, PaymentRefund};
 
-/// This is a model struct for ListPaymentsResponse type
+/// This is a model struct for ListPaymentRefundsResponse type
 #[derive(Clone, Debug, Deserialize, PartialEq)]
-pub struct ListPaymentsResponse {
+pub struct ListPaymentRefundsResponse {
     /// Information about errors encountered during the request.
     pub errors: Option<Vec<Error>>,
-    /// The requested list of payments.
-    pub payments: Option<Vec<Payment>>,
+    /// The list of requested refunds.
+    pub payments: Option<Vec<PaymentRefund>>,
     /// The pagination cursor to be used in a subsequent request. If empty, this is the final
     /// response.
     ///

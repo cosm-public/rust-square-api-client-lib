@@ -22,7 +22,7 @@ pub struct SquareClient {
     // pub employees: EmployeesApi,
     // pub gift_cards: GiftCardsApi,
     // pub gift_card_activities: GiftCardActivitiesApi,
-    // pub inventory: InventoryApi,
+    pub inventory: InventoryApi,
     // pub invoices: InvoicesApi,
     // pub labor: LaborApi,
     pub locations: LocationsApi,
@@ -32,7 +32,7 @@ pub struct SquareClient {
     // pub merchants: MerchantsApi,
     pub orders: OrdersApi,
     pub payments: PaymentsApi,
-    // pub refunds: RefundsApi,
+    pub refunds: RefundsApi,
     // pub sites: SitesApi,
     // pub snippets: SnippetsApi,
     // pub subscriptions: SubscriptionsApi,
@@ -56,9 +56,11 @@ impl SquareClient {
             cards: CardsApi::new(config.clone(), http_client.clone()),
             catalog: CatalogApi::new(config.clone(), http_client.clone()),
             customers: CustomersApi::new(config.clone(), http_client.clone()),
+            inventory: InventoryApi::new(config.clone(), http_client.clone()),
             locations: LocationsApi::new(config.clone(), http_client.clone()),
             orders: OrdersApi::new(config.clone(), http_client.clone()),
-            payments: PaymentsApi::new(config, http_client),
+            payments: PaymentsApi::new(config.clone(), http_client.clone()),
+            refunds: RefundsApi::new(config, http_client),
         };
 
         Ok(this)

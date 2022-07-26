@@ -5,6 +5,7 @@ mod inventory_api;
 mod locations_api;
 mod orders_api;
 mod payments_api;
+mod refunds_api;
 
 pub use cards_api::CardsApi;
 pub use catalog_api::CatalogApi;
@@ -13,3 +14,4 @@ pub use inventory_api::InventoryApi;
 pub use locations_api::LocationsApi;
 pub use orders_api::OrdersApi;
 pub use payments_api::PaymentsApi;
+pub use refunds_api::RefundsApi;
