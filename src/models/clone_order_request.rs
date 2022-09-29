@@ -3,7 +3,7 @@
 use serde::Serialize;
 
 /// This is a model struct for CloneOrderRequest type.
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct CloneOrderRequest {
     /// The ID of the order to clone.
     pub order_id: String,

@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// The risk level associated with a payment.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum RiskEvaluationRiskLevel {
     /// Indicates Square is still evaluating the payment.

@@ -7,7 +7,7 @@ use serde::{Deserialize, Serialize};
 /// Including a catalog object will include all of its subtypes. For example, including a category
 /// in a product set will include all of its items and associated item variations in the product
 /// set. Including an item in a product set will also include its item variations.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct CatalogProductSet {
     /// User-defined name for the product set. For example, "Clearance Items" or "Winter Sale
     /// Items".

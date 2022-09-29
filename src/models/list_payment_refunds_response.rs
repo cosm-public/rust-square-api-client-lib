@@ -5,7 +5,7 @@ use serde::Deserialize;
 use super::{errors::Error, PaymentRefund};
 
 /// This is a model struct for ListPaymentRefundsResponse type
-#[derive(Clone, Debug, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq)]
 pub struct ListPaymentRefundsResponse {
     /// Information about errors encountered during the request.
     pub errors: Option<Vec<Error>>,

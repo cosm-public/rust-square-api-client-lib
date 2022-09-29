@@ -4,7 +4,7 @@ const PRODUCTION_URL: &str = "https://connect.squareup.com";
 const SANDBOX_URL: &str = "https://connect.squareupsandbox.com";
 
 /// Identifies the Square environment in which this app instance is operating
-#[derive(Clone, Debug, PartialEq)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 pub enum Environment {
     Production,
     Sandbox,
@@ -37,7 +37,10 @@ mod tests {
     fn get_base_url_default() {
         let environment = Environment::default();
         assert_eq!(Environment::Sandbox, environment);
-        assert_eq!(String::from("https://connect.squareupsandbox.com"), environment.get_base_url())
+        assert_eq!(
+            String::from("https://connect.squareupsandbox.com"),
+            environment.get_base_url()
+        )
     }
 
     #[test]

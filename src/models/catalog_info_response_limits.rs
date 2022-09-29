@@ -3,7 +3,7 @@
 use serde::Deserialize;
 
 /// Limits that apply to the Catalog Info API.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq)]
 pub struct CatalogInfoResponseLimits {
     /// The maximum number of objects that may appear within a single batch in a
     /// `/v2/catalog/batch-upsert` request.

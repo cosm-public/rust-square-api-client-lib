@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// The information needed to define a custom unit, provided by the seller.
-#[derive(Clone, Debug, Default, Serialize, PartialEq, Deserialize)]
+#[derive(Clone, Debug, Default, Serialize, Eq, PartialEq, Deserialize)]
 pub struct MeasurementUnitCustom {
     /// The name of the custom unit, for example "bushel".
     pub name: String,

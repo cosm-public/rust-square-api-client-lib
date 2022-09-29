@@ -14,7 +14,7 @@ use super::{
 /// Fixed-amount, order-scoped taxes are distributed across all non-zero line item totals. The
 /// amount distributed to each line item is relative to the amount the item contributes to the order
 /// subtotal.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct OrderLineItemTax {
     /// A unique ID that identifies the tax only within this order.
     pub uid: Option<String>,

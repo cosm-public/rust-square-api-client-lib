@@ -7,7 +7,7 @@ use super::enums::{SearchOrdersSortField, SortOrder};
 /// Sorting criteria for a `SearchOrders` request.
 ///
 /// Results can only be sorted by a timestamp field.
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct SearchOrdersSort {
     /// The field to sort by.
     ///

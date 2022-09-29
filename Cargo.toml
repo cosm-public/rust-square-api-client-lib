@@ -1,20 +1,26 @@
 [package]
-name = "rust-square-api-client-lib"
-version = "0.13.0"
+name = "square-api-client"
+description = "Rust wrapper for the Square web API"
+version = "0.1.0"
+homepage = "https://github/cosm-eng/rust-square-api-client-lib"
+repository = "https://github/cosm-eng/rust-square-api-client-lib"
+authors = ["Mike Harkins <mharkins@cosm.com>"]
 edition = "2021"
+license = "Apache-2.0"
+keywords = ["Square", "API", "Client", "SDK"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-async-trait = "0.1.53"
-chrono = { version = "0.4.19", features = ["serde"] }
-infer = "0.7.0"
-log = "0.4.16"
-reqwest = { version = "0.11.10", features = ["json", "multipart"] }
-reqwest-middleware = "0.1.5"
-reqwest-retry = "0.1.4"
+async-trait = "0.1.57"
+chrono = { version = "0.4.22", features = ["serde"] }
+infer = "0.9.0"
+log = "0.4.17"
+reqwest = { version = "0.11.11", features = ["json", "multipart"] }
+reqwest-middleware = "0.1.6"
+reqwest-retry = "0.1.5"
 package_info = "0.1.0"
 package_info_derive = "0.1.0"
 rustc_version_runtime = "0.2.1"
-serde = { version = "1.0.136", features = ["derive"] }
-serde_json = "1.0.79"
+serde = { version = "1.0.144", features = ["derive"] }
+serde_json = "1.0.85"

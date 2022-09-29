@@ -6,7 +6,7 @@ use super::{enums::CatalogQuickAmountsSettingsOption, CatalogQuickAmount};
 
 /// A parent Catalog Object model represents a set of Quick Amounts and the settings control the
 /// amounts.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct CatalogQuickAmountsSettings {
     /// Represents the option seller currently uses on Quick Amounts.
     pub option: CatalogQuickAmountsSettingsOption,

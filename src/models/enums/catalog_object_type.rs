@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 
 /// Possible types of CatalogObjects returned from the catalog, each containing type-specific
 /// properties in the `*_data` field corresponding to the specfied object type.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum CatalogObjectType {
     /// The `CatalogObject` instance is of the [CatalogItem] type and represents an item. The

@@ -19,7 +19,7 @@ use super::{
 /// store any sensitive information (personally identifiable information, card details, etc.). [Read
 /// more about custom
 /// attributes](https://developer.squareup.com/docs/catalog-api/add-custom-attributes)
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct CatalogCustomAttributeDefinition {
     /// The type of this custom attribute. Cannot be modified after creation. Required.
     pub r#type: CatalogCustomAttributeDefinitionType,

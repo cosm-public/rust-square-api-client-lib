@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// The unit of volume used to measure a quantity.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum MeasurementUnitVolume {
     /// The volume is measured in ounces.

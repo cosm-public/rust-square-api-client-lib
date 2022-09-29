@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Represents a time period - either a single period or a repeating period.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct CatalogTimePeriod {
     /// An iCalendar (RFC 5545) [event](https://tools.ietf.org/html/rfc5545#section-3.6.1), which
     /// specifies the name, timing, duration and recurrence of this time period.

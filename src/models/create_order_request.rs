@@ -5,7 +5,7 @@ use serde::Serialize;
 use super::Order;
 
 /// This is a model struct for CreateOrderRequest type
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct CreateOrderRequest {
     /// The order to create. If this field is set, the only other top-level field that can be set is
     /// the `idempotency_key`.

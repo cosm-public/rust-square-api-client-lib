@@ -8,7 +8,7 @@ use super::enums::Country;
 ///
 /// For more information, see [Working with
 /// Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses).
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct Address {
     /// The first line of the address.
     ///

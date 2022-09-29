@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// The current state of this fulfillment.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum OrderFulfillmentState {
     /// Indicates that the fulfillment has been proposed.

@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use super::Money;
 
 /// A collection of various money amounts.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct OrderMoneyAmounts {
     /// The total money.
     pub total_money: Option<Money>,

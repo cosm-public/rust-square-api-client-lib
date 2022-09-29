@@ -9,7 +9,7 @@ use super::{enums::CatalogModifierListSelectionType, CatalogObject};
 /// For example, a "Condiments" modifier list applicable to a "Hot Dog" item may contain "Ketchup",
 /// "Mustard", and "Relish" modifiers. Use the `selection_type` field to specify whether or not
 /// multiple selections from the modifier list are allowed.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct CatalogModifierList {
     /// The name for the `CatalogModifierList` instance. This is a searchable attribute for use in
     /// applicable query filters, and its value length is of Unicode code points.

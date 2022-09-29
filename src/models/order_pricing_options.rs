@@ -6,7 +6,7 @@ use serde::{Deserialize, Serialize};
 ///
 /// The options affect how the order's price is calculated. They can be used, for example, to apply
 /// automatic price adjustments that are based on preconfigured [pricing rules](CatalogPricingRule).
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct OrderPricingOptions {
     /// The option to determine whether pricing rule-based discounts are automatically applied to an
     /// order.

@@ -5,7 +5,7 @@ use serde::Deserialize;
 use super::{errors::Error, InventoryCount};
 
 /// This is a model struct for RetrieveInventoryCountResponse type.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq)]
 pub struct RetrieveInventoryCountResponse {
     /// The current calculated inventory counts for the requested object and locations.
     pub counts: Option<Vec<InventoryCount>>,

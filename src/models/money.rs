@@ -12,7 +12,7 @@ use super::enums::Currency;
 /// [Working with Monetary
 /// Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)
 /// for more information.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct Money {
     /// The amount of money, in the smallest denomination of the currency indicated by `currency`.
     /// For example, when `currency` is `USD`, `amount` is in cents. Monetary amounts can be

@@ -10,7 +10,7 @@ use super::{
 };
 
 /// Represents a service charge applied to an order.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct OrderServiceCharge {
     /// A unique ID that identifies the service charge only within this order.
     pub uid: Option<String>,

@@ -6,7 +6,7 @@ use serde::{Deserialize, Serialize};
 ///
 /// Values are in
 /// [ISO 3166-1-alpha-2 format](http://www.iso.org/iso/home/standards/country_codes.htm).
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum Country {
     /// Unknown

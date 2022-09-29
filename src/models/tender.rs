@@ -7,7 +7,7 @@ use super::{
 };
 
 /// Represents a tender (i.e., a method of payment) used in a Square transaction.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 pub struct Tender {
     /// The tender's unique ID.
     pub id: Option<String>,

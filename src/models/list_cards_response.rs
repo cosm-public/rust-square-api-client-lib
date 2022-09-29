@@ -5,7 +5,7 @@ use serde::Deserialize;
 use super::{errors::Error, Card};
 
 /// This is a model struct for ListCardsResponse type
-#[derive(Clone, Debug, Default, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq)]
 pub struct ListCardsResponse {
     /// Information on errors encountered during the request.
     pub errors: Option<Vec<Error>>,

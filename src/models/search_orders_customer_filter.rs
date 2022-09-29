@@ -6,7 +6,7 @@ use serde::Serialize;
 /// order.
 ///
 /// It does not filter based on the [FulfillmentRecipient](OrderFulfillmentRecipient) `customer_id`.
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct SearchOrdersCustomerFilter {
     /// A list of customer IDs to filter by.
     pub customer_ids: Option<Vec<String>>,

@@ -5,7 +5,7 @@ use serde::Deserialize;
 use super::MeasurementUnit;
 
 /// Contains the name and abbreviation for standard measurement unit.
-#[derive(Clone, Debug, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq)]
 pub struct StandardUnitDescription {
     /// Identifies the measurement unit being described.
     pub unit: Option<MeasurementUnit>,

@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Indicates whether this is a line-item or order-level tax.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum OrderLineItemTaxScope {
     /// Used for reporting only. The original transaction tax scope is currently not supported by

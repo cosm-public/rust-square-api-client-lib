@@ -5,7 +5,7 @@ use serde::Deserialize;
 use super::{errors::Error, CatalogIdMapping, CatalogObject};
 
 /// This is a model struct for UpsertCatalogObjectResponse type.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq)]
 pub struct UpsertCatalogObjectResponse {
     /// Any errors that occurred during the request.
     pub errors: Option<Vec<Error>>,

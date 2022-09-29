@@ -5,7 +5,7 @@ use serde::Serialize;
 use super::enums::{SearchCatalogItemsRequestStockLevel, SortOrder};
 
 /// This is a model struct for SearchCatalogItemsRequest type.
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct SearchCatalogItemsRequest {
     /// The text filter expression to return items or item variations containing specified text in
     /// the `name`, `description`, or `abbreviation` attribute value of an item, or in the `name`,

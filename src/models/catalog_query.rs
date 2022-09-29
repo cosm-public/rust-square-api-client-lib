@@ -38,7 +38,7 @@ use super::{
 ///
 /// For example, to search for [CatalogItem] objects by searchable attributes, you can use the
 /// `"name"`, `"description"`, or `"abbreviation"` attribute in an applicable query filter.
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct CatalogQuery {
     /// A query expression to sort returned query result by the given attribute.
     pub sorted_attribute_query: Option<CatalogQuerySortedAttribute>,

@@ -6,7 +6,7 @@ use serde::{Deserialize, Serialize};
 ///
 /// For information about these payment source types, see [Take
 /// Payments](https://developer.squareup.com/docs/payments-api/take-payments).
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum PaymentSourceType {
     /// A seller can charge a card (a credit/debit card or Square gift card). For more information,

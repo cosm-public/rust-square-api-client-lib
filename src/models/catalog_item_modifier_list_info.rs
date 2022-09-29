@@ -6,7 +6,7 @@ use super::CatalogModifierOverride;
 
 /// Options to control the properties of a `CatalogModifierList` applied to a `CatalogItem`
 /// instance.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct CatalogItemModifierListInfo {
     pub modifier_list_id: String,
     pub modifier_overrides: Option<Vec<CatalogModifierOverride>>,

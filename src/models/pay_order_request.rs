@@ -3,7 +3,7 @@
 use serde::Serialize;
 
 /// This is a model struct for PayOrderRequest type
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct PayOrderRequest {
     /// A value you specify that uniquely identifies this request among requests you have sent. If
     /// you are unsure whether a particular payment request was completed successfully, you can

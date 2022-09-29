@@ -9,7 +9,7 @@ use super::enums::CatalogCustomAttributeDefinitionType;
 /// Custom attributes can be defined and added to `ITEM` and `ITEM_VARIATION` type catalog objects.
 /// [Read more about custom
 /// attributes](https://developer.squareup.com/docs/catalog-api/add-custom-attributes).
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct CatalogCustomAttributeValue {
     /// The name of the custom attribute.
     pub name: Option<String>,

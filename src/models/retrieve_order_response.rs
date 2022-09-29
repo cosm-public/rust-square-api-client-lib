@@ -5,7 +5,7 @@ use serde::Deserialize;
 use super::{errors::Error, Order};
 
 /// This is a model struct for RetrieveOrderResponse type.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq)]
 pub struct RetrieveOrderResponse {
     /// The requested order.
     pub order: Order,

@@ -6,7 +6,7 @@ use super::Money;
 
 /// Represents an additional recipient (other than the merchant) receiving a portion of this tender.
 #[deprecated]
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 pub struct AdditionalRecipient {
     /// **Required** The location ID for a recipient (other than the merchant) receiving a portion
     /// of this tender.

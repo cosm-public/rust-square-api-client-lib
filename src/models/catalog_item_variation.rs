@@ -11,7 +11,7 @@ use super::{
 /// An item variation (i.e., product) in the Catalog object model.
 ///
 /// Each item may have a maximum of 250 item variations.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct CatalogItemVariation {
     /// The ID of the `CatalogItem` associated with this item variation.
     pub item_id: Option<String>,

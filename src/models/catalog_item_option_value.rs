@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 
 /// An enumerated value that can link a `CatalogItemVariation` to an item option as one of its item
 /// option values.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct CatalogItemOptionValue {
     /// Unique ID of the associated item option.
     pub item_option_id: Option<String>,

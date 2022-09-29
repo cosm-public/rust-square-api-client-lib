@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Determines a seller's option on Quick Amounts feature.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum CatalogQuickAmountsSettingsOption {
     /// Option for seller to disable Quick Amounts.

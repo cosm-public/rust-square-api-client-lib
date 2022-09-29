@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Defines the possible types for a custom attribute.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum CatalogCustomAttributeDefinitionType {
     /// A free-form string containing up to 255 characters.

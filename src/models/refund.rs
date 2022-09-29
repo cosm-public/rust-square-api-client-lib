@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use super::{enums::RefundStatus, AdditionalRecipient, DateTime, Money};
 
 /// Represents a refund processed for a Square transaction.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 pub struct Refund {
     /// **Required** The refund's unique ID.
     pub id: String,

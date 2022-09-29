@@ -4,7 +4,7 @@ use serde::Serialize;
 
 /// The query filter to return the search result whose named attribute values are prefixed by the
 /// specified attribute value.
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct CatalogQueryPrefix {
     /// The name of the attribute to be searched.
     ///

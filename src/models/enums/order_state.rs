@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// The state of the order.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum OrderState {
     /// Indicates that the order is open. Open orders can be updated.

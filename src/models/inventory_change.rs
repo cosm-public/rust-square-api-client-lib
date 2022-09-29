@@ -8,7 +8,7 @@ use super::{
 };
 
 /// Changes created for the request.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 pub struct InventoryChange {
     /// Contains details about the inventory adjustment when type is ADJUSTMENT,
     /// and is unset for all other change types.

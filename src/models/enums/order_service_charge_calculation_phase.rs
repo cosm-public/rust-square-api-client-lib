@@ -8,7 +8,7 @@ use serde::{Deserialize, Serialize};
 ///
 /// [Read more about how order totals are
 /// calculated.](https://developer.squareup.com/docs/orders-api/how-it-works#how-totals-are-calculated)
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum OrderServiceChargeCalculationPhase {
     /// The service charge is applied after discounts, but before taxes.

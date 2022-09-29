@@ -10,7 +10,7 @@ use super::Money;
 /// Line-item scoped discounts must have applied discounts added manually for any applicable line
 /// items. The corresponding applied money is automatically computed based on participating line
 /// items.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct OrderLineItemAppliedDiscount {
     /// A unique ID that identifies the applied discount only within this order.
     pub uid: Option<String>,

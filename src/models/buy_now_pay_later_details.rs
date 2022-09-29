@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use super::AfterpayDetails;
 
 /// Additional details about a Buy Now Pay Later payment type.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct BuyNowPayLaterDetails {
     /// The brand used for the Buy Now Pay Later payment. The brand can be `AFTERPAY` or `UNKNOWN`.
     pub brand: Option<String>,

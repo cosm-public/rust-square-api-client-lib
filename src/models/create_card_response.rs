@@ -6,7 +6,7 @@ use super::errors::Error;
 use super::Card;
 
 /// This is a model struct for CreateCardResponse type.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq)]
 pub struct CreateCardResponse {
     /// Any errors that occurred during the request.
     pub errors: Option<Vec<Error>>,

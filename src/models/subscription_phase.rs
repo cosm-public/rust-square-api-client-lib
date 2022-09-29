@@ -8,7 +8,7 @@ use super::{enums::SubscriptionCadence, Money};
 ///
 /// For more information, see [Set Up and Manage a Subscription
 /// Plan](https://developer.squareup.com/docs/subscriptions-api/setup-plan).
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct SubscriptionPhase {
     /// The Square-assigned ID of the subscription phase. This field cannot be changed after a
     /// `SubscriptionPhase` is created.

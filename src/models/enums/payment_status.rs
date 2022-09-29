@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// The status of a [Payment]
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum PaymentStatus {
     /// The payment is Approved.

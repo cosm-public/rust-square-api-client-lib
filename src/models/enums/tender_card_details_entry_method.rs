@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Indicates the method used to enter the card's details.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum TenderCardDetailsEntryMethod {
     /// The card was swiped through a Square reader or Square stand.

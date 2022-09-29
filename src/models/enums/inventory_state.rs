@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// A type of state for the related quantity of items
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum InventoryState {
     Custom,

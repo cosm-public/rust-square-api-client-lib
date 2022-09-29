@@ -7,7 +7,7 @@ use super::{
 };
 
 /// Represents a Square customer profile in the Customer Directory of a Square seller.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct Customer {
     /// A unique Square-assigned ID for the customer profile. If you need this ID for an API
     /// request, use the ID returned when you created the customer profile or call the

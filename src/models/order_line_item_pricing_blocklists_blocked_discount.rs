@@ -6,7 +6,7 @@ use serde::{Deserialize, Serialize};
 ///
 /// The discount must be identified by either `discount_uid` or `discount_catalog_object_id`, but
 /// not both.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct OrderLineItemPricingBlocklistsBlockedDiscount {
     /// A unique ID of the `BlockedDiscount` within the order.
     pub uid: Option<String>,

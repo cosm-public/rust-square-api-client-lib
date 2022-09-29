@@ -5,7 +5,7 @@ use serde::Deserialize;
 use super::{errors::Error, InventoryChange, InventoryCount};
 
 /// This is a model struct for BatchChangeInventoryResponse type.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq)]
 pub struct BatchChangeInventoryResponse {
     /// Any errors that occurred during the request.
     pub errors: Option<Vec<Error>>,

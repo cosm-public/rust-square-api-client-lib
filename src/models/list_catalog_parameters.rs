@@ -53,8 +53,10 @@ impl ToString for ListCatalogParameters {
 
         if let Some(types) = &self.types {
             if !types.is_empty() {
-                let string_types: Vec<String> =
-                    types.iter().map(|t| serde_json::to_string(&t).unwrap()).collect();
+                let string_types: Vec<String> = types
+                    .iter()
+                    .map(|t| serde_json::to_string(&t).unwrap())
+                    .collect();
                 params.push(format!("types={}", string_types.join(",")));
             }
         }

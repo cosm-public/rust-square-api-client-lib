@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Configuration associated with Custom Attribute Definitions of type `NUMBER`.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct CatalogCustomAttributeDefinitionNumberConfig {
     /// An integer between 0 and 5 that represents the maximum number of positions allowed after the
     /// decimal in number custom attribute values For example:

@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Indicates the Square product used to process a transaction.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum TransactionProduct {
     /// Square Point of Sale.

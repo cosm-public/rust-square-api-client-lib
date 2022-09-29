@@ -8,7 +8,7 @@ use super::{
 };
 
 /// The line item being returned in an order.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct OrderReturnLineItem {
     /// A unique ID for this return line-item entry.
     pub uid: Option<String>,

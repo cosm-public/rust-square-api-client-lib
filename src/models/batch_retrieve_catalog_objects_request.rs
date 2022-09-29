@@ -3,7 +3,7 @@
 use serde::Serialize;
 
 /// This is a model class for BatchRetrieveCatalogObjectsRequest type.
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct BatchRetrieveCatalogObjectsRequest {
     /// The IDs of the CatalogObjects to be retrieved.
     pub object_ids: Vec<String>,

@@ -5,7 +5,7 @@ use serde::Serialize;
 use super::{Order, OrderReward};
 
 /// This is a model struct for CalculateOrderRequest type
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct CalculateOrderRequest {
     /// The order to be calculated. Expects the entire order, not a sparse update.
     pub order: Order,

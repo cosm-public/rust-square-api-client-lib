@@ -5,7 +5,7 @@ use serde::Serialize;
 use super::Payment;
 
 /// This is a model struct for UpdatePaymentRequest type.
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct UpdatePaymentRequest {
     /// The updated [Payment] object.
     pub payment: Option<Payment>,

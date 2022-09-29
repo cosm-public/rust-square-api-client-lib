@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Describes the type of this unit and indicates which field contains the unit information.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum MeasurementUnitUnitType {
     /// The unit details are contained in the custom_unit field.

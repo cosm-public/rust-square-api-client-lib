@@ -7,7 +7,7 @@ use serde::{Deserialize, Serialize};
 /// For example, a t-shirt item may offer a color option and a size option. An item option value
 /// would represent each variation of t-shirt: For example, "Color:Red, Size:Small" or
 /// "Color:Blue, Size:Medium".
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct CatalogItemOptionValueForItemVariation {
     /// The unique id of an item option.
     pub item_option_id: Option<String>,

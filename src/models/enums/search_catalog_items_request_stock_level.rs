@@ -3,7 +3,7 @@
 use serde::Serialize;
 
 /// Defines supported stock levels of the item inventory.
-#[derive(Clone, Debug, PartialEq, Serialize)]
+#[derive(Clone, Debug, Eq, PartialEq, Serialize)]
 pub enum SearchCatalogItemsRequestStockLevel {
     /// The item inventory is empty.
     Out,

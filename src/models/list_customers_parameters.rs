@@ -57,7 +57,10 @@ impl ToString for ListCustomersParameters {
         }
 
         if self.sort_order != DEFAULT_SORT_ORDER {
-            params.push(format!("sort_order={}", serde_json::to_string(&self.sort_order).unwrap()));
+            params.push(format!(
+                "sort_order={}",
+                serde_json::to_string(&self.sort_order).unwrap()
+            ));
         }
 
         if params.is_empty() {

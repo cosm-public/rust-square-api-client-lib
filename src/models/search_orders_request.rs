@@ -5,7 +5,7 @@ use serde::Serialize;
 use super::SearchOrdersQuery;
 
 /// This is a model struct for SearchOrdersRequest type.
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct SearchOrdersRequest {
     pub location_ids: Option<Vec<String>>,
     /// A pagination cursor returned by a previous call to this endpoint. Provide this cursor to

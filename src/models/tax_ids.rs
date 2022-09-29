@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 ///  Identifiers for the location used by various governments for tax purposes.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 pub struct TaxIds {
     /// The NIF (Numero de Identificacion Fiscal) number is a nine-character tax identifier used in
     /// Spain. If it is present, it has been validated. For example, `73628495A`.

@@ -3,7 +3,7 @@
 use serde::Serialize;
 
 /// This is a model struct for CompletePaymentRequest type.
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct CompletePaymentRequest {
     /// Used for optimistic concurrency. This opaque token identifies the current [Payment] version
     /// that the caller expects. If the server has a different version of the Payment, the update

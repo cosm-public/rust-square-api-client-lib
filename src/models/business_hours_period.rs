@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use super::enums::DayOfWeek;
 
 /// The hours of operation for a location.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct BusinessHoursPeriod {
     /// The day of the week for this time period.
     pub day_of_week: Option<DayOfWeek>,

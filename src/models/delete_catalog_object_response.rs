@@ -5,7 +5,7 @@ use serde::Deserialize;
 use super::{errors::Error, DateTime};
 
 /// This is a model struct for DeleteCatalogObjectResponse type
-#[derive(Clone, Debug, Default, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq)]
 pub struct DeleteCatalogObjectResponse {
     /// Any errors that occurred during the request.
     pub errors: Option<Vec<Error>>,

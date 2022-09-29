@@ -41,7 +41,12 @@ impl InventoryApi {
         catalog_object_id: &str,
         params: RetrieveInventoryCountParams,
     ) -> Result<RetrieveInventoryCountResponse, ApiError> {
-        let url = format!("{}/{}{}", &self.url(), catalog_object_id, params.to_query_string());
+        let url = format!(
+            "{}/{}{}",
+            &self.url(),
+            catalog_object_id,
+            params.to_query_string()
+        );
         let response = self.client.get(&url).await?;
 
         response.deserialize().await

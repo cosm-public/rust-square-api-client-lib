@@ -12,7 +12,7 @@ use super::{
 };
 
 /// Additional details about BANK_ACCOUNT type payments.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct BankAccountPaymentDetails {
     /// The name of the bank associated with the bank account.
     pub bank_name: Option<String>,

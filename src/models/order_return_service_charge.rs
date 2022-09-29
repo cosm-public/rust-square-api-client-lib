@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use super::{enums::OrderServiceChargeCalculationPhase, Money, OrderLineItemAppliedTax};
 
 /// Represents the service charge applied to the original order.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct OrderReturnServiceCharge {
     /// A unique ID that identifies the return service charge only within this order.
     pub uid: Option<String>,

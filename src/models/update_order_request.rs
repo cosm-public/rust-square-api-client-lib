@@ -5,7 +5,7 @@ use serde::Serialize;
 use super::Order;
 
 /// This is a model struct for UpdateOrderRequest type.
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct UpdateOrderRequest {
     /// The [sparse
     /// order](https://developer.squareup.com/docs/orders-api/manage-orders#sparse-order-objects)

@@ -6,7 +6,7 @@ use serde::Deserialize;
 use super::errors::Error;
 use super::Customer;
 
-#[derive(Clone, Debug, Default, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq)]
 pub struct CreateCustomerResponse {
     /// Any errors that occurred during the request.
     pub errors: Option<Vec<Error>>,

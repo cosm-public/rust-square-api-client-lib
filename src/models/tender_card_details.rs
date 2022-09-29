@@ -8,7 +8,7 @@ use super::{
 };
 
 /// Represents additional details of a tender with type `CARD` or `SQUARE_GIFT_CARD`
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 pub struct TenderCardDetails {
     /// The credit card payment's current state (such as `AUTHORIZED` or `CAPTURED`). See
     /// [TenderCardDetailsStatus] for possible values.

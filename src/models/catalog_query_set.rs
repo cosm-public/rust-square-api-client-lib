@@ -4,7 +4,7 @@ use serde::Serialize;
 
 /// The query filter to return the search result(s) by exact match of the specified `attribute_name`
 /// and any of the `attribute_values`.
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct CatalogQuerySet {
     /// The name of the attribute to be searched. Matching of the attribute name is exact.
     ///

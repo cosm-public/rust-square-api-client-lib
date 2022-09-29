@@ -5,7 +5,7 @@ use serde::Deserialize;
 use super::enums::InventoryState;
 
 /// The current calculated inventory counts for the requested object and locations.
-#[derive(Clone, Debug, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq)]
 pub struct InventoryCount {
     /// Read only An RFC 3339-formatted timestamp that indicates when the most recent physical
     /// count or adjustment affecting the estimated count is received.

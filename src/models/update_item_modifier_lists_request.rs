@@ -3,7 +3,7 @@
 use serde::Serialize;
 
 /// This is a model struct for UpdateItemModifierListsRequest type.
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct UpdateItemModifierListsRequest {
     /// The IDs of the catalog items associated with the CatalogModifierList objects being updated.
     pub item_ids: Vec<String>,

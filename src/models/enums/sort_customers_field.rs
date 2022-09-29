@@ -2,7 +2,7 @@
 
 use serde::Serialize;
 
-#[derive(Clone, Debug, PartialEq, Serialize)]
+#[derive(Clone, Debug, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 
 /// Use one or more customer attributes as the sort key to sort searched customer profiles.

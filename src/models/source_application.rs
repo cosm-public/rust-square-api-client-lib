@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use super::enums::Product;
 
 /// Provides information about the application used to generate a change.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct SourceApplication {
     /// **Read-only** [Product] type for the application.
     pub product: Option<Product>,

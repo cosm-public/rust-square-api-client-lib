@@ -15,7 +15,7 @@ use super::{
 /// This is a model struct for OrderFulfillment type.
 ///
 /// Contains details about how to fulfill this order.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct OrderFulfillment {
     /// A unique ID that identifies the fulfillment only within this order.
     pub uid: Option<String>,

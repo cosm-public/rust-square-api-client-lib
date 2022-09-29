@@ -4,7 +4,7 @@ use serde::Deserialize;
 
 /// A lightweight description of an [order](Order) that is returned when `returned_entries` is
 /// `true` on a [SearchOrdersRequest].
-#[derive(Clone, Debug, Default, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq)]
 pub struct OrderEntry {
     /// The ID of the order.
     pub order_id: String,

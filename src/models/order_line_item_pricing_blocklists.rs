@@ -11,7 +11,7 @@ use super::{
 ///
 /// For more information, see [Apply Taxes and
 /// Discounts](https://developer.squareup.com/docs/orders-api/apply-taxes-and-discounts).
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct OrderLineItemPricingBlocklists {
     /// A list of discounts blocked from applying to the line item. Discounts can be blocked by the
     /// `discount_uid` (for ad hoc discounts) or the `discount_catalog_object_id` (for catalog

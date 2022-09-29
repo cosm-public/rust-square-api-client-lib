@@ -11,7 +11,7 @@ use serde::Deserialize;
 ///
 /// After the request is submitted and the object created, a permanent server-generated ID is
 /// assigned to the new object. The permanent ID is unique across the Square catalog.
-#[derive(Clone, Debug, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq)]
 pub struct CatalogIdMapping {
     /// The client-supplied temporary `#`-prefixed ID for a new `CatalogObject`.
     pub client_object_id: String,

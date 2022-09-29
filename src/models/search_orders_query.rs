@@ -5,7 +5,7 @@ use serde::Serialize;
 use super::{SearchOrdersFilter, SearchOrdersSort};
 
 /// Contains query criteria for the search.
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct SearchOrdersQuery {
     /// Criteria to filter results by.
     pub filter: Option<SearchOrdersFilter>,

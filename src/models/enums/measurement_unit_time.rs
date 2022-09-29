@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Unit of time used to measure a quantity (a duration).
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum MeasurementUnitTime {
     /// The time is measured in milliseconds.

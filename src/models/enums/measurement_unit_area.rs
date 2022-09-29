@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Unit of area used to measure a quantity.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum MeasurementUnitArea {
     /// The area is measured in acres.

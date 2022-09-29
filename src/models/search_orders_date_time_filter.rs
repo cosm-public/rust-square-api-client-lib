@@ -19,7 +19,7 @@ use super::TimeRange;
 /// `SearchOrdersSort` to `CLOSED_AT`. Otherwise, `SearchOrders` throws an error.
 /// [Learn more about filtering orders by time
 /// range](https://developer.squareup.com/docs/orders-api/manage-orders#important-note-on-filtering-orders-by-time-range).
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct SearchOrdersDateTimeFilter {
     /// The time range for filtering on the `created_at` timestamp. If you use this value, you must
     /// set the `sort_field` in the `OrdersSearchSort` object to `CREATED_AT`.

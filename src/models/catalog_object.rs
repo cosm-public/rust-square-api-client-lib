@@ -27,7 +27,7 @@ use super::{
 ///
 /// For a more detailed discussion of the Catalog data model, please see the
 /// [Design a Catalog](https://developer.squareup.com/docs/catalog-api/design-a-catalog) guide.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct CatalogObject {
     /// The type of this object. Each object type has expected properties expressed in a structured
     /// format within its corresponding `*_data` field below.

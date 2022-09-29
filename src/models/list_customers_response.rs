@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use super::{errors::Error, Customer};
 
 /// This is a model struct for ListCustomersResponse type
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct ListCustomersResponse {
     /// Information on errors encountered during the request.
     pub errors: Option<Vec<Error>>,

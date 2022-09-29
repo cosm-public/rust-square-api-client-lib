@@ -5,7 +5,7 @@ use serde::Deserialize;
 use super::{errors::Error, Customer};
 
 /// This is a model struct for UpdateCustomerResponse type.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq)]
 pub struct UpdateCustomerResponse {
     /// The updated customer.
     pub customer: Customer,

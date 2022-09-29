@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use super::Money;
 
 /// A modifier applicable to items at the time of sale.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct CatalogModifier {
     /// The modifier name. This is a searchable attribute for use in applicable query filters, and
     /// its value length is of Unicode code points.

@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Actions that can be performed on a [Payment]
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum PaymentCapability {
     /// The payment amount can be edited up.

@@ -8,7 +8,7 @@ use super::{
 };
 
 /// A [CatalogObject] instance of the `ITEM` type, also referred to as an item, in the catalog.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct CatalogItem {
     /// The item's name. This is a searchable attribute for use in applicable query filters, its
     /// value must not be empty, and the length is of Unicode code points.

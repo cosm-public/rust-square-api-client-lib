@@ -17,7 +17,7 @@ use super::{
 ///
 /// All Connect V2 Transactions have all been converted to Orders including all associated
 /// itemization data.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct Order {
     /// **Read only** The order's unique ID.
     pub id: Option<String>,

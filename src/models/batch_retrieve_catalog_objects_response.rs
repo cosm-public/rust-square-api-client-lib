@@ -5,7 +5,7 @@ use serde::Deserialize;
 use super::{errors::Error, CatalogObject};
 
 /// This is a model struct for BatchRetrieveCatalogObjectsResponse type.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq)]
 pub struct BatchRetrieveCatalogObjectsResponse {
     /// A list of [CatalogObject]s returned.
     pub objects: Option<Vec<CatalogObject>>,

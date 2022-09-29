@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use super::enums::{TaxCalculationPhase, TaxInclusionType};
 
 /// A tax applicable to an item.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct CatalogTax {
     /// The tax's name. This is a searchable attribute for use in applicable query filters, and its
     /// value length is of Unicode code points.

@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// The order (e.g., chronological or alphabetical) in which results from a request are returned.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum SortOrder {
     /// The results are returned in descending (e.g., newest-first or Z-A) order.

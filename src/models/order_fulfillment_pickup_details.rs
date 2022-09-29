@@ -10,7 +10,7 @@ use super::{
 /// This is a model struct for OrderFulfillmentPickupDetails type.
 ///
 /// Contains details necessary to fulfill a pickup order.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct OrderFulfillmentPickupDetails {
     /// Information about the person meant to pick up this fulfillment from a physical location.
     pub recipient: Option<OrderFulfillmentRecipient>,

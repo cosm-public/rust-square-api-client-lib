@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// An [IANA time zone](https://www.iana.org/time-zones) identifier for a time zone.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 pub enum Timezone {
     #[serde(rename = "Africa/Abidjan")]
     AfricaAbidjan,

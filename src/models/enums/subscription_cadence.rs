@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Determines the billing cadence of a [Subscription]
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum SubscriptionCadence {
     /// Once per day

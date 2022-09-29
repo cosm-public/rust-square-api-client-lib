@@ -5,7 +5,7 @@ use serde::Serialize;
 use super::{enums::CatalogObjectType, CatalogQuery, DateTime};
 
 /// This is a model struct for SearchCatalogObjectsRequest type.
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct SearchCatalogObjectsRequest {
     /// The pagination cursor returned in the previous response. Leave unset for an initial request.
     /// See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more

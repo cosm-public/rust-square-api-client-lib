@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use super::Money;
 
 /// A line item modifier being returned.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct OrderReturnLineItemModifier {
     /// A unique ID that identifies the return modifier only within this order.
     pub uid: Option<String>,

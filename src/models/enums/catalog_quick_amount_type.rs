@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Determines the type of a specific Quick Amount.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum CatalogQuickAmountType {
     /// Quick Amount is created manually by the seller.

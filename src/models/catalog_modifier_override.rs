@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Options to control how to override the default behavior of the specified modifier.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct CatalogModifierOverride {
     /// The ID of the `CatalogModifier` whose default behavior is being overridden.
     pub modifier_id: String,

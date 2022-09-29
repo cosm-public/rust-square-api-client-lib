@@ -6,7 +6,7 @@ use super::{enums::InventoryState, SourceApplication};
 
 /// Represents the quantity of an item variation that is physically present at a specific location,
 /// verified by a seller or a seller's employee.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 pub struct InventoryPhysicalCount {
     /// A unique Square-generated ID for the InventoryPhysicalCount.
     pub id: String,

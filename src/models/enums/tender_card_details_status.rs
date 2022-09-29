@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Indicates the card transaction's current status.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum TenderCardDetailsStatus {
     /// The card transaction has been authorized but not yet captured.

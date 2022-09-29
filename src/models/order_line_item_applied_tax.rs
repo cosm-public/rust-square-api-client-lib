@@ -9,7 +9,7 @@ use super::Money;
 /// Order-scoped taxes automatically include the applied taxes in each line item. Line item taxes
 /// must be referenced from any applicable line items. The corresponding applied money is
 /// automatically computed, based on the set of participating line items.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct OrderLineItemAppliedTax {
     /// A unique ID that identifies the applied tax only within this order.
     pub uid: Option<String>,

@@ -7,7 +7,7 @@ use serde::{Deserialize, Serialize};
 use super::Money;
 
 /// A [CatalogModifier].
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct OrderLineItemModifier {
     /// A unique ID that identifies the modifier only within this order.
     pub uid: Option<String>,

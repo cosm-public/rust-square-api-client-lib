@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 
 /// Defines the visibility of a custom attribute to applications other than their creating
 /// application.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum CatalogCustomAttributeDefinitionAppVisibility {
     /// Other applications cannot read this custom attribute.

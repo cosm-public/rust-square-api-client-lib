@@ -10,7 +10,7 @@ use super::{
 };
 
 /// Represents a payment processed by the Square API.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct Payment {
     /// **Read only** A unique ID for the payment.
     pub id: Option<String>,

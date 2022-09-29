@@ -4,7 +4,7 @@ use serde::Serialize;
 use super::InventoryChange;
 
 /// This is a model class for BatchChangeInventoryRequest type.
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct BatchChangeInventoryRequest {
     /// A client-supplied, universally unique identifier (UUID) for the request.
     pub idempotency_key: String,

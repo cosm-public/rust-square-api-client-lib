@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use super::{enums::ProcessingFeeType, DateTime, Money};
 
 /// Represents the Square processing fee.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct ProcessingFee {
     /// The timestamp of when the fee takes effect.
     pub effective_at: Option<DateTime>,

@@ -15,7 +15,7 @@ use super::{
 /// Reflects the current status of a card payment.
 ///
 /// Contains only non-confidential information.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct CardPaymentDetails {
     /// The card payment's current state.
     pub status: Option<CardPaymentDetailsStatus>,

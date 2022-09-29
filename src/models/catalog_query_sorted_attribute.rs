@@ -5,7 +5,7 @@ use serde::Serialize;
 use super::enums::SortOrder;
 
 /// The query expression to specify the key to sort search results.
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct CatalogQuerySortedAttribute {
     /// The attribute whose value is used as the sort key.
     ///

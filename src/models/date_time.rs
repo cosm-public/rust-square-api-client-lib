@@ -14,7 +14,7 @@ use super::errors::ApiError;
 /// RFC3339 String and Unix Timestamp i64.
 ///
 /// Uses chrono library under the hood.
-#[derive(Clone, PartialEq)]
+#[derive(Clone, Eq, PartialEq)]
 pub struct DateTime {
     inner: chrono::DateTime<Utc>,
 }

@@ -5,7 +5,7 @@ use serde::Serialize;
 
 use super::{Address, CustomerTaxIds};
 
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct CreateCustomerRequest {
     /// The idempotency key for the request. For more information, see
     /// [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency).

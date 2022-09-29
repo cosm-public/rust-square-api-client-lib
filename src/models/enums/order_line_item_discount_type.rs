@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Indicates how the discount is applied to the associated line item or order.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum OrderLineItemDiscountType {
     /// Used for reporting only. The original transaction discount type is currently not supported

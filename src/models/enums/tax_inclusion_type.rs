@@ -3,7 +3,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Whether to the tax amount should be additional to or included in the CatalogItem price.
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum TaxInclusionType {
     /// The tax is an additive tax. The tax amount is added on top of the CatalogItemVariation

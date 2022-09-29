@@ -5,7 +5,7 @@ use serde::Deserialize;
 use super::{errors::Error, CatalogIdMapping, CatalogObject, DateTime};
 
 /// This is a model struct for BatchUpsertCatalogObjectsResponse type.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq)]
 pub struct BatchUpsertCatalogObjectsResponse {
     /// The created successfully created CatalogObjects.
     pub objects: Option<Vec<CatalogObject>>,

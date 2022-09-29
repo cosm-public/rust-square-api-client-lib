@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use super::enums::ApplicationDetailsExternalSquareProduct;
 
 /// Details about the application that took the payment.
-#[derive(Clone, Debug, Default, Deserialize, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct ApplicationDetails {
     /// The Square product, such as Square Point of Sale (POS), Square Invoices, or Square Virtual
     /// Terminal.
