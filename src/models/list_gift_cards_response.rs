@@ -10,7 +10,7 @@ pub struct ListGiftCardsResponse {
     /// Any errors that occurred during the request.
     pub errors: Option<Vec<Error>>,
     /// The requested gift cards or an empty object if none are found.
-    pub objects: Option<Vec<GiftCard>>,
+    pub gift_cards: Option<Vec<GiftCard>>,
     /// When a response is truncated, it includes a cursor that you can use in a subsequent request
     /// to retrieve the next set of gift cards. If a cursor is not present, this is the final
     /// response. For more information, see

@@ -23,8 +23,8 @@ pub struct CreateGiftCardRequest {
     /// To direct Square to generate a 16-digit GAN, omit `gan_source` and `gan`.
     ///
     /// To provide a custom GAN, include `gan_source` and `gan`.
-    /// ** For `gan_source`, specify `OTHER`.
-    /// ** For `gan`, provide a custom GAN containing 8 to 20 alphanumeric characters. The GAN must
+    /// - For `gan_source`, specify `OTHER`.
+    /// - For `gan`, provide a custom GAN containing 8 to 20 alphanumeric characters. The GAN must
     /// be unique for the seller and cannot start with the same bank identification number (BIN) as
     /// major credit cards. Do not use GANs that are easy to guess (such as 12345678) because they
     /// greatly increase the risk of fraud. It is the responsibility of the developer to ensure the

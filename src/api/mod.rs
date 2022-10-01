@@ -1,6 +1,7 @@
 mod cards_api;
 mod catalog_api;
 mod customers_api;
+mod gift_card_activities_api;
 mod gift_cards_api;
 mod inventory_api;
 mod locations_api;
@@ -11,6 +12,7 @@ mod refunds_api;
 pub use cards_api::CardsApi;
 pub use catalog_api::CatalogApi;
 pub use customers_api::CustomersApi;
+pub use gift_card_activities_api::GiftCardActivitiesApi;
 pub use gift_cards_api::GiftCardsApi;
 pub use inventory_api::InventoryApi;
 pub use locations_api::LocationsApi;
