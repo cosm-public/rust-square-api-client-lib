@@ -1,7 +1,7 @@
 [package]
 name = "square-api-client"
 description = "Rust wrapper for the Square web API"
-version = "0.1.0"
+version = "0.1.1"
 homepage = "https://github/cosm-eng/rust-square-api-client-lib"
 repository = "https://github/cosm-eng/rust-square-api-client-lib"
 authors = ["Mike Harkins <mharkins@cosm.com>"]
