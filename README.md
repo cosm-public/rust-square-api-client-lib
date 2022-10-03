@@ -84,6 +84,7 @@ commonly required features.
 ### Implemented so far
 
 So far, we have the following APIs wrapped in the Rust Square API Client:
+- [Apple Pay](https://developer.squareup.com/reference/square/apple-pay-api)
 - [Cards](https://developer.squareup.com/reference/square/cards-api)
 - [Catalog](https://developer.squareup.com/reference/square/catalog-api)
 - [Customers](https://developer.squareup.com/reference/square/customers-api)
@@ -98,7 +99,6 @@ So far, we have the following APIs wrapped in the Rust Square API Client:
 ### To be implemented
 
 Future versions of this crate will implement the following APIs:
-- [Apple Pay](https://developer.squareup.com/reference/square/apple-pay-api)
 - [Bank Accounts](https://developer.squareup.com/reference/square/bank-accounts-api)
 - [Bookings](https://developer.squareup.com/reference/square/bookings-api)
 - [Cash Drawers](https://developer.squareup.com/reference/square/cash-drawers-api)
