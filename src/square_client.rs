@@ -8,7 +8,7 @@ use crate::{api::*, config::Configuration, http::client::HttpClient, models::err
 pub struct SquareClient {
     // pub mobile_authorization: MobileAuthorizationApi,
     // pub o_auth: OAuthApi,
-    // pub apple_pay: ApplePayApi,
+    pub apple_pay: ApplePayApi,
     // pub bank_accounts: BankAccountsApi,
     // pub bookings: BookingsApi,
     pub cards: CardsApi,
@@ -53,6 +53,7 @@ impl SquareClient {
         let http_client = HttpClient::try_new(&config.http_client_config)?;
 
         let this: SquareClient = Self {
+            apple_pay: ApplePayApi::new(config.clone(), http_client.clone()),
             cards: CardsApi::new(config.clone(), http_client.clone()),
             catalog: CatalogApi::new(config.clone(), http_client.clone()),
             customers: CustomersApi::new(config.clone(), http_client.clone()),

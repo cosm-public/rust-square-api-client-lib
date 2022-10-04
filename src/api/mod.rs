@@ -1,3 +1,4 @@
+mod apple_pay_api;
 mod cards_api;
 mod catalog_api;
 mod customers_api;
@@ -9,6 +10,7 @@ mod orders_api;
 mod payments_api;
 mod refunds_api;
 
+pub use apple_pay_api::ApplePayApi;
 pub use cards_api::CardsApi;
 pub use catalog_api::CatalogApi;
 pub use customers_api::CustomersApi;
