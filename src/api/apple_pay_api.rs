@@ -15,7 +15,7 @@ const DEFAULT_URI: &str = "/apple-pay/domains";
 pub struct ApplePayApi {
     /// App config information
     config: Configuration,
-    /// HTTP Client for requests to the Locations API endpoints
+    /// HTTP Client for requests to the Apple Pay API endpoints
     client: HttpClient,
 }
 

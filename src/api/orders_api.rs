@@ -29,7 +29,7 @@ const DEFAULT_URI: &str = "/orders";
 pub struct OrdersApi {
     /// App config information
     config: Configuration,
-    /// HTTP Client for requests to the Cards API endpoints
+    /// HTTP Client for requests to the Orders API endpoints
     client: HttpClient,
 }
 

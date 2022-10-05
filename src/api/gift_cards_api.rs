@@ -25,7 +25,7 @@ const DEFAULT_URI: &str = "/gift-cards";
 pub struct GiftCardsApi {
     /// App config information
     config: Configuration,
-    /// HTTP Client for requests to the Cards API endpoints
+    /// HTTP Client for requests to the Gift Cards API endpoints
     client: HttpClient,
 }
 

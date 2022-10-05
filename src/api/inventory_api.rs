@@ -27,7 +27,7 @@ const DEFAULT_URI: &str = "/inventory";
 pub struct InventoryApi {
     /// App config information
     config: Configuration,
-    /// HTTP Client for requests to the Payments API endpoints
+    /// HTTP Client for requests to the Inventory API endpoints
     client: HttpClient,
 }
 
@@ -35,6 +35,7 @@ impl InventoryApi {
     pub fn new(config: Configuration, client: HttpClient) -> Self {
         Self { config, client }
     }
+
     /// Retrieves the current calculated stock count for a given CatalogObject at a given set of Locations.
     pub async fn retrieve_inventory_count(
         &self,
