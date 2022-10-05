@@ -24,7 +24,7 @@ const DEFAULT_URI: &str = "/invoices";
 pub struct InvoicesApi {
     /// App config information
     config: Configuration,
-    /// HTTP Client for requests to the Payments API endpoints
+    /// HTTP Client for requests to the Invoices API endpoints
     client: HttpClient,
 }
 

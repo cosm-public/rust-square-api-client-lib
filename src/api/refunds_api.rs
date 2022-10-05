@@ -27,7 +27,7 @@ const DEFAULT_URI: &str = "/refunds";
 pub struct RefundsApi {
     /// App config information
     config: Configuration,
-    /// HTTP Client for requests to the Payments API endpoints
+    /// HTTP Client for requests to the Refunds API endpoints
     client: HttpClient,
 }
 

@@ -19,7 +19,9 @@ const DEFAULT_URI: &str = "/customers";
 
 /// Create and manage [Customer] profiles and sync CRM systems with Square.
 pub struct CustomersApi {
+    /// App config information
     config: Configuration,
+    /// HTTP Client for requests to the Customers API endpoints
     client: HttpClient,
 }
 

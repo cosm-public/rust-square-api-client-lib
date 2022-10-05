@@ -14,8 +14,6 @@ pub struct SearchInvoicesResponse {
     /// For more information, see
     /// [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
     pub cursor: Option<String>,
-    /// Ids of returned item variations matching the specified query expression.
-    pub matched_variation_ids: Option<Vec<String>>,
     /// Information about errors encountered during the request.
     pub errors: Option<Vec<Error>>,
 }
