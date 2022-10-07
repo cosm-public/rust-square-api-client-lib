@@ -42,17 +42,11 @@ impl ToString for ListGiftCardsParameters {
         let mut params = Vec::new();
 
         if let Some(gift_card_type) = &self.r#type {
-            params.push(format!(
-                "type={}",
-                serde_json::to_string(gift_card_type).unwrap()
-            ));
+            params.push(format!("type={}", serde_json::to_string(gift_card_type).unwrap()));
         }
 
         if let Some(gift_card_status) = &self.state {
-            params.push(format!(
-                "state={}",
-                serde_json::to_string(gift_card_status).unwrap()
-            ));
+            params.push(format!("state={}", serde_json::to_string(gift_card_status).unwrap()));
         }
 
         if let Some(limit) = self.limit {

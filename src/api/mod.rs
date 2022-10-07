@@ -1,6 +1,7 @@
 mod apple_pay_api;
 mod cards_api;
 mod catalog_api;
+mod customer_groups_api;
 mod customers_api;
 mod gift_card_activities_api;
 mod gift_cards_api;
@@ -14,6 +15,7 @@ mod refunds_api;
 pub use apple_pay_api::ApplePayApi;
 pub use cards_api::CardsApi;
 pub use catalog_api::CatalogApi;
+pub use customer_groups_api::CustomerGroupsApi;
 pub use customers_api::CustomersApi;
 pub use gift_card_activities_api::GiftCardActivitiesApi;
 pub use gift_cards_api::GiftCardsApi;

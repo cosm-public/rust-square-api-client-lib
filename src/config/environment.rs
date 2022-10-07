@@ -37,10 +37,7 @@ mod tests {
     fn get_base_url_default() {
         let environment = Environment::default();
         assert_eq!(Environment::Sandbox, environment);
-        assert_eq!(
-            String::from("https://connect.squareupsandbox.com"),
-            environment.get_base_url()
-        )
+        assert_eq!(String::from("https://connect.squareupsandbox.com"), environment.get_base_url())
     }
 
     #[test]

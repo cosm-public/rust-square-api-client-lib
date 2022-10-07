@@ -75,10 +75,7 @@ impl ToString for ListPaymentRefundsParameters {
         }
 
         if let Some(sort_order) = &self.sort_order {
-            params.push(format!(
-                "sort_order={}",
-                serde_json::to_string(sort_order).unwrap()
-            ));
+            params.push(format!("sort_order={}", serde_json::to_string(sort_order).unwrap()));
         }
 
         if let Some(cursor) = &self.cursor {
@@ -94,10 +91,7 @@ impl ToString for ListPaymentRefundsParameters {
         }
 
         if let Some(source_type) = &self.source_type {
-            params.push(format!(
-                "source_type={}",
-                serde_json::to_string(source_type).unwrap()
-            ));
+            params.push(format!("source_type={}", serde_json::to_string(source_type).unwrap()));
         }
 
         if let Some(limit) = &self.limit {

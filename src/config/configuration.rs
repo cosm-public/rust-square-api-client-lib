@@ -68,10 +68,7 @@ mod tests {
     #[test]
     fn get_base_url_default_url() {
         let configuration = Configuration::default();
-        assert_eq!(
-            "https://connect.squareupsandbox.com/v2",
-            configuration.get_base_url()
-        );
+        assert_eq!("https://connect.squareupsandbox.com/v2", configuration.get_base_url());
     }
 
     #[test]

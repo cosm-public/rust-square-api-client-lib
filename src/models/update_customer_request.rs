@@ -1,8 +1,8 @@
-//! Model struct for UpdateOrderRequest type
+//! Model struct for UpdateCustomerRequest type
 
 use super::{Address, CustomerTaxIds};
 use serde::Serialize;
-/// This is a model struct for UpdateOrderRequest type.
+/// This is a model struct for UpdateCustomerRequest type.
 #[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct UpdateCustomerRequest {
     /// The email address associated with the customer profile.

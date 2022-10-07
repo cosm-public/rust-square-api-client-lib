@@ -58,17 +58,11 @@ impl HttpClient {
 
     /// Sends an HTTP POST
     pub async fn post<T: Serialize>(&self, url: &str, body: &T) -> Result<HttpResponse, ApiError> {
-        let response = self
-            .retry_client
-            .post(url)
-            .json(body)
-            .send()
-            .await
-            .map_err(|e| {
-                let msg = format!("Error posting to {}: {}", url, e);
-                error!("{}", msg);
-                ApiError::new(&msg)
-            })?;
+        let response = self.retry_client.post(url).json(body).send().await.map_err(|e| {
+            let msg = format!("Error posting to {}: {}", url, e);
+            error!("{}", msg);
+            ApiError::new(&msg)
+        })?;
         Ok(HttpResponse::new(response))
     }
 
@@ -80,10 +74,8 @@ impl HttpClient {
         filepath: &str,
     ) -> Result<HttpResponse, ApiError> {
         let request = serde_json::to_string(body).map_err(|e| {
-            let msg = format!(
-                "Error serializing request body - url: {}, body: {:?}: {}",
-                url, body, e
-            );
+            let msg =
+                format!("Error serializing request body - url: {}, body: {:?}: {}", url, body, e);
             error!("{}", msg);
             ApiError::new(&msg)
         })?;
@@ -105,21 +97,13 @@ impl HttpClient {
             ApiError::new(&msg)
         })?;
 
-        let form = multipart::Form::new()
-            .text("request", request)
-            .part("file", part);
+        let form = multipart::Form::new().text("request", request).part("file", part);
 
-        let response = self
-            .client
-            .post(url)
-            .multipart(form)
-            .send()
-            .await
-            .map_err(|e| {
-                let msg = format!("Error posting to {}: {}", url, e);
-                error!("{}", msg);
-                ApiError::new(&msg)
-            })?;
+        let response = self.client.post(url).multipart(form).send().await.map_err(|e| {
+            let msg = format!("Error posting to {}: {}", url, e);
+            error!("{}", msg);
+            ApiError::new(&msg)
+        })?;
         Ok(HttpResponse::new(response))
     }
 
@@ -135,17 +119,11 @@ impl HttpClient {
 
     /// Sends an HTTP PUT
     pub async fn put<T: Serialize>(&self, url: &str, body: &T) -> Result<HttpResponse, ApiError> {
-        let response = self
-            .retry_client
-            .put(url)
-            .json(body)
-            .send()
-            .await
-            .map_err(|e| {
-                let msg = format!("Error putting to {}: {}", url, e);
-                error!("{}", msg);
-                ApiError::new(&msg)
-            })?;
+        let response = self.retry_client.put(url).json(body).send().await.map_err(|e| {
+            let msg = format!("Error putting to {}: {}", url, e);
+            error!("{}", msg);
+            ApiError::new(&msg)
+        })?;
         Ok(HttpResponse::new(response))
     }
 
@@ -157,10 +135,8 @@ impl HttpClient {
         filepath: &str,
     ) -> Result<HttpResponse, ApiError> {
         let request = serde_json::to_string(body).map_err(|e| {
-            let msg = format!(
-                "Error serializing request body - url: {}, body: {:?}: {}",
-                url, body, e
-            );
+            let msg =
+                format!("Error serializing request body - url: {}, body: {:?}: {}", url, body, e);
             error!("{}", msg);
             ApiError::new(&msg)
         })?;
@@ -182,21 +158,13 @@ impl HttpClient {
             ApiError::new(&msg)
         })?;
 
-        let form = multipart::Form::new()
-            .text("request", request)
-            .part("file", part);
+        let form = multipart::Form::new().text("request", request).part("file", part);
 
-        let response = self
-            .client
-            .put(url)
-            .multipart(form)
-            .send()
-            .await
-            .map_err(|e| {
-                let msg = format!("Error putting to {}: {}", url, e);
-                error!("{}", msg);
-                ApiError::new(&msg)
-            })?;
+        let response = self.client.put(url).multipart(form).send().await.map_err(|e| {
+            let msg = format!("Error putting to {}: {}", url, e);
+            error!("{}", msg);
+            ApiError::new(&msg)
+        })?;
         Ok(HttpResponse::new(response))
     }
 
