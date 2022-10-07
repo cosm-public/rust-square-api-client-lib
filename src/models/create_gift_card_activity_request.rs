@@ -5,7 +5,7 @@ use serde::Serialize;
 use super::GiftCardActivity;
 
 /// This is a model struct for CreateGiftCardActivityRequest type
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct CreateGiftCardActivityRequest {
     /// A unique string that identifies the CreateGiftCardActivity request.
     ///

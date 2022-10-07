@@ -5,7 +5,7 @@ use serde::Serialize;
 use super::Invoice;
 
 /// This is a model struct for CreateInvoiceRequest type
-#[derive(Clone, Debug, Default, PartialEq, Serialize)]
+#[derive(Clone, Debug, Default, Eq, PartialEq, Serialize)]
 pub struct CreateInvoiceRequest {
     /// The invoice to create.
     pub invoice: Invoice,

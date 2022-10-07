@@ -5,7 +5,7 @@ use serde::Deserialize;
 use super::{errors::Error, GiftCardActivity};
 
 /// This is a model struct for CreateGiftCardActivityResponse type
-#[derive(Clone, Debug, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq)]
 pub struct CreateGiftCardActivityResponse {
     /// Any errors that occurred during the request.
     pub errors: Option<Vec<Error>>,
