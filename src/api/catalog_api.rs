@@ -103,10 +103,7 @@ impl CatalogApi {
         image_filepath: &str,
     ) -> Result<CreateCatalogImageResponse, ApiError> {
         let url = format!("{}/images", &self.url());
-        let response = self
-            .client
-            .post_multipart(&url, body, image_filepath)
-            .await?;
+        let response = self.client.post_multipart(&url, body, image_filepath).await?;
 
         response.deserialize().await
     }
@@ -123,10 +120,7 @@ impl CatalogApi {
         image_filepath: &str,
     ) -> Result<UpdateCatalogImageResponse, ApiError> {
         let url = format!("{}/images/{}", &self.url(), image_id);
-        let response = self
-            .client
-            .put_multipart(&url, body, image_filepath)
-            .await?;
+        let response = self.client.put_multipart(&url, body, image_filepath).await?;
 
         response.deserialize().await
     }
@@ -196,12 +190,7 @@ impl CatalogApi {
         object_id: &str,
         params: &RetrieveCatalogObjectParameters,
     ) -> Result<RetrieveCatalogObjectResponse, ApiError> {
-        let url = format!(
-            "{}/object/{}{}",
-            &self.url(),
-            object_id,
-            params.to_query_string()
-        );
+        let url = format!("{}/object/{}{}", &self.url(), object_id, params.to_query_string());
         let response = self.client.get(&url).await?;
 
         response.deserialize().await

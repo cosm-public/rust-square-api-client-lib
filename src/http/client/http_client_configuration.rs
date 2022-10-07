@@ -99,18 +99,9 @@ mod tests {
         let http_client_configuration =
             HttpClientConfiguration::new(15, String::from("some_user_agent"), Headers::default());
         assert_eq!(15, http_client_configuration.timeout);
-        assert_eq!(
-            String::from("some_user_agent"),
-            http_client_configuration.user_agent
-        );
-        assert_eq!(
-            Headers::default(),
-            http_client_configuration.default_headers
-        );
-        assert_eq!(
-            RetryConfiguration::default(),
-            http_client_configuration.retry_configuration
-        );
+        assert_eq!(String::from("some_user_agent"), http_client_configuration.user_agent);
+        assert_eq!(Headers::default(), http_client_configuration.default_headers);
+        assert_eq!(RetryConfiguration::default(), http_client_configuration.retry_configuration);
     }
 
     #[test]
@@ -119,17 +110,8 @@ mod tests {
         let http_client_configuration =
             HttpClientConfiguration::new(15, String::from("some_user_agent"), Headers::default());
         assert_eq!(15, http_client_configuration.timeout);
-        assert_eq!(
-            String::from("some_user_agent"),
-            http_client_configuration.user_agent
-        );
-        assert_eq!(
-            Headers::default(),
-            http_client_configuration.default_headers
-        );
-        assert_eq!(
-            RetryConfiguration::default(),
-            http_client_configuration.retry_configuration
-        );
+        assert_eq!(String::from("some_user_agent"), http_client_configuration.user_agent);
+        assert_eq!(Headers::default(), http_client_configuration.default_headers);
+        assert_eq!(RetryConfiguration::default(), http_client_configuration.retry_configuration);
     }
 }

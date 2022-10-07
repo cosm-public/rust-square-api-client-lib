@@ -60,10 +60,8 @@ impl ToString for ListGiftCardActivitiesParameters {
         }
 
         if let Some(gift_card_activity_type) = &self.r#type {
-            params.push(format!(
-                "type={}",
-                serde_json::to_string(gift_card_activity_type).unwrap()
-            ));
+            params
+                .push(format!("type={}", serde_json::to_string(gift_card_activity_type).unwrap()));
         }
 
         if let Some(location_id) = &self.location_id {
@@ -71,17 +69,11 @@ impl ToString for ListGiftCardActivitiesParameters {
         }
 
         if let Some(begin_time) = &self.begin_time {
-            params.push(format!(
-                "begin_time={}",
-                serde_json::to_string(begin_time).unwrap()
-            ));
+            params.push(format!("begin_time={}", serde_json::to_string(begin_time).unwrap()));
         }
 
         if let Some(end_time) = &self.end_time {
-            params.push(format!(
-                "end_time={}",
-                serde_json::to_string(end_time).unwrap()
-            ));
+            params.push(format!("end_time={}", serde_json::to_string(end_time).unwrap()));
         }
 
         if let Some(limit) = self.limit {

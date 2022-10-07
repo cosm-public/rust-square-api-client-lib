@@ -42,10 +42,7 @@ impl ToString for RetrieveCatalogObjectParameters {
         let mut params = Vec::new();
 
         if let Some(include_related_objects) = &self.include_related_objects {
-            params.push(format!(
-                "include_related_objects={}",
-                include_related_objects
-            ));
+            params.push(format!("include_related_objects={}", include_related_objects));
         }
 
         if let Some(catalog_version) = &self.catalog_version {
