@@ -34,5 +34,6 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: ${{ matrix.check }}
-          args: ${{ matrix.flags }}
+          args: ${{ matrix.flags 
+          }}
   

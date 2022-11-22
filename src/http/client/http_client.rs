@@ -57,7 +57,11 @@ impl HttpClient {
     }
 
     /// Sends an HTTP POST
-    pub async fn post<T: Serialize>(&self, url: &str, body: &T) -> Result<HttpResponse, ApiError> {
+    pub async fn post<T: Serialize + ?Sized>(
+        &self,
+        url: &str,
+        body: &T,
+    ) -> Result<HttpResponse, ApiError> {
         let response = self.retry_client.post(url).json(body).send().await.map_err(|e| {
             let msg = format!("Error posting to {}: {}", url, e);
             error!("{}", msg);

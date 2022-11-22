@@ -1,5 +1,4 @@
 //! Model struct for RetrieveInventoryCountParams type
-//!
 
 #[derive(Clone, Debug, Default)]
 pub struct RetrieveInventoryCountParams {
