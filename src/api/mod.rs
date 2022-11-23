@@ -12,6 +12,7 @@ mod locations_api;
 mod orders_api;
 mod payments_api;
 mod refunds_api;
+mod subscriptions_api;
 
 pub use apple_pay_api::ApplePayApi;
 pub use cards_api::CardsApi;
@@ -27,3 +28,4 @@ pub use locations_api::LocationsApi;
 pub use orders_api::OrdersApi;
 pub use payments_api::PaymentsApi;
 pub use refunds_api::RefundsApi;
+pub use subscriptions_api::SubscriptionsApi;

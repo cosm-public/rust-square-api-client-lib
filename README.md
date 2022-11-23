@@ -98,6 +98,7 @@ So far, we have the following APIs wrapped in the Rust Square API Client:
 - [Orders](https://developer.squareup.com/reference/square/orders-api)
 - [Payments](https://developer.squareup.com/reference/square/payments-api)
 - [Refunds](https://developer.squareup.com/reference/square/refunds-api)
+- [Subscriptions](https://developer.squareup.com/reference/square/subscriptions-api)
 
 ### To be implemented
 
@@ -117,7 +118,6 @@ Future versions of this crate will implement the following APIs:
 - [Payouts](https://developer.squareup.com/reference/square/payouts-api)
 - [Sites](https://developer.squareup.com/reference/square/sites-api)
 - [Snippets](https://developer.squareup.com/reference/square/snippets-api)
-- [Subscriptions](https://developer.squareup.com/reference/square/subscriptions-api)
 - [Team](https://developer.squareup.com/reference/square/team-api)
 - [Terminal](https://developer.squareup.com/reference/square/terminal-api)
 - [Vendors](https://developer.squareup.com/reference/square/vendors-api)
