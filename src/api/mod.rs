@@ -13,6 +13,7 @@ mod orders_api;
 mod payments_api;
 mod refunds_api;
 mod subscriptions_api;
+mod team_api;
 
 pub use apple_pay_api::ApplePayApi;
 pub use cards_api::CardsApi;
@@ -29,3 +30,4 @@ pub use orders_api::OrdersApi;
 pub use payments_api::PaymentsApi;
 pub use refunds_api::RefundsApi;
 pub use subscriptions_api::SubscriptionsApi;
+pub use team_api::TeamApi;
