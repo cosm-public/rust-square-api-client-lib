@@ -36,7 +36,7 @@ pub struct SquareClient {
     // pub sites: SitesApi,
     // pub snippets: SnippetsApi,
     pub subscriptions: SubscriptionsApi,
-    // pub team: TeamApi,
+    pub team: TeamApi,
     // pub terminal: TerminalApi,
     // pub config: Configuration,
     // pub http_client: HttpClient,
@@ -67,7 +67,8 @@ impl SquareClient {
             orders: OrdersApi::new(config.clone(), http_client.clone()),
             payments: PaymentsApi::new(config.clone(), http_client.clone()),
             refunds: RefundsApi::new(config.clone(), http_client.clone()),
-            subscriptions: SubscriptionsApi::new(config, http_client),
+            subscriptions: SubscriptionsApi::new(config.clone(), http_client.clone()),
+            team: TeamApi::new(config, http_client),
         };
 
         Ok(this)

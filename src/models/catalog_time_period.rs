@@ -9,10 +9,12 @@ pub struct CatalogTimePeriod {
     /// specifies the name, timing, duration and recurrence of this time period.
     ///
     /// Example:
-    /// ```ignore
-    /// DTSTART:20190707T180000
-    /// DURATION:P2H
-    /// RRULE:FREQ=WEEKLY;BYDAY=MO,WE,FR
+    /// ```
+    /// use square_api_client::models::CatalogTimePeriod;
+    ///
+    /// CatalogTimePeriod {
+    ///     event: Some(String::from("DTSTART:20190707T180000\nDURATION:P2H\nRRULE:FREQ=WEEKLY;BYDAY=MO,WE,FR")),
+    /// };
     /// ```
     /// Only `SUMMARY`, `DTSTART`, `DURATION` and `RRULE` fields are supported. `DTSTART` must be in
     /// local (unzoned) time format. Note that while `BEGIN:VEVENT` and `END:VEVENT` is not required
