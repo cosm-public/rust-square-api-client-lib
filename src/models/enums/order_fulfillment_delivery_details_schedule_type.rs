@@ -2,8 +2,7 @@
 
 use serde::{Deserialize, Serialize};
 
-/// Indicates the schedule type of the delivery fulfillment. If SCHEDULED, then deliver_at is required.
-/// If ASAP, then prep_time_duration is required. The default is SCHEDULED.
+/// The schedule type of the delivery fulfillment.
 #[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum OrderFulfillmentDeliveryDetailsScheduleType {

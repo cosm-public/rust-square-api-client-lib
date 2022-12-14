@@ -6,7 +6,7 @@ use super::{
     enums::OrderFulfillmentDeliveryDetailsScheduleType, DateTime, OrderFulfillmentRecipient,
 };
 
-/// Contains the details necessary to fulfill a shipment order.
+/// Describes delivery details of an order fulfillment.
 #[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 pub struct OrderFulfillmentDeliveryDetails {
     /// Information about the person meant to receive this shipment fulfillment.
