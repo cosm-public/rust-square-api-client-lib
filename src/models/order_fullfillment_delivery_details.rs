@@ -2,7 +2,9 @@
 
 use serde::{Deserialize, Serialize};
 
-use super::{enums::ScheduleType, DateTime, OrderFulfillmentRecipient};
+use super::{
+    enums::OrderFulfillmentDeliveryDetailsScheduleType, DateTime, OrderFulfillmentRecipient,
+};
 
 /// Contains the details necessary to fulfill a shipment order.
 #[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
@@ -11,7 +13,7 @@ pub struct OrderFulfillmentDeliveryDetails {
     pub recipient: Option<OrderFulfillmentRecipient>,
     /// Indicates the fulfillment delivery schedule type. If SCHEDULED, then deliver_at is required.
     /// If ASAP, then prep_time_duration is required. The default is SCHEDULED
-    pub schedule_type: Option<ScheduleType>,
+    pub schedule_type: Option<OrderFulfillmentDeliveryDetailsScheduleType>,
     /// *Read only* The
     /// [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates) indicating
     /// when the shipment was requested.
