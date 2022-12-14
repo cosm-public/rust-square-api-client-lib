@@ -8,8 +8,8 @@ use super::{
     enums::{
         OrderFulfillmentFulfillmentLineItemApplication, OrderFulfillmentState, OrderFulfillmentType,
     },
-    OrderFulfillmentFulfillmentEntry, OrderFulfillmentPickupDetails,
-    OrderFulfillmentShipmentDetails,
+    OrderFulfillmentDeliveryDetails, OrderFulfillmentFulfillmentEntry,
+    OrderFulfillmentPickupDetails, OrderFulfillmentShipmentDetails,
 };
 
 /// This is a model struct for OrderFulfillment type.
@@ -68,4 +68,8 @@ pub struct OrderFulfillment {
     /// Shipping label created. COMPLETED: Package has been shipped. CANCELED: Shipment has been
     /// canceled. FAILED: Shipment has failed.
     pub shipment_details: Option<OrderFulfillmentShipmentDetails>,
+    /// Describes delivery details of an order fulfillment. These details are required when the fulfillment
+    /// type is Delivery.
+    ///
+    pub delivery_details: Option<OrderFulfillmentDeliveryDetails>,
 }
