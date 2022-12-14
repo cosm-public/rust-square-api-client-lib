@@ -10,4 +10,6 @@ pub enum OrderFulfillmentType {
     Pickup,
     /// A fulfillment to be shipped by a shipping carrier.
     Shipment,
+    /// A courier to deliver the fulfillment.
+    Delivery,
 }
