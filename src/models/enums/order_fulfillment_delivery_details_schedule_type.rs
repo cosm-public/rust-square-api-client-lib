@@ -1,8 +1,8 @@
-//! Model for order_fulfillment_delivery_details_schedule_type enum
+//! Model for OrderFulfillmentDeliveryDetailsScheduleType enum
 
 use serde::{Deserialize, Serialize};
 
-/// Indicates the fulfillment delivery schedule type. If SCHEDULED, then deliver_at is required.
+/// Indicates the schedule type of the delivery fulfillment. If SCHEDULED, then deliver_at is required.
 /// If ASAP, then prep_time_duration is required. The default is SCHEDULED.
 #[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
