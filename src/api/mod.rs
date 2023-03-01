@@ -1,6 +1,7 @@
 mod apple_pay_api;
 mod cards_api;
 mod catalog_api;
+mod checkout_api;
 mod customer_groups_api;
 mod customer_segments_api;
 mod customers_api;
@@ -18,6 +19,7 @@ mod team_api;
 pub use apple_pay_api::ApplePayApi;
 pub use cards_api::CardsApi;
 pub use catalog_api::CatalogApi;
+pub use checkout_api::CheckoutApi;
 pub use customer_groups_api::CustomerGroupsApi;
 pub use customer_segments_api::CustomerSegmentsApi;
 pub use customers_api::CustomersApi;
