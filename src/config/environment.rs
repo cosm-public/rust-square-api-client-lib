@@ -4,9 +4,10 @@ const PRODUCTION_URL: &str = "https://connect.squareup.com";
 const SANDBOX_URL: &str = "https://connect.squareupsandbox.com";
 
 /// Identifies the Square environment in which this app instance is operating
-#[derive(Clone, Debug, Eq, PartialEq)]
+#[derive(Clone, Debug, Default, Eq, PartialEq)]
 pub enum Environment {
     Production,
+    #[default]
     Sandbox,
     Custom(String),
 }
@@ -19,13 +20,6 @@ impl Environment {
             Environment::Sandbox => String::from(SANDBOX_URL),
             Environment::Custom(custom_url) => custom_url.clone(),
         }
-    }
-}
-
-impl Default for Environment {
-    /// Sandbox is the default environment
-    fn default() -> Self {
-        Self::Sandbox
     }
 }
 

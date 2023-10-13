@@ -1,18 +1,25 @@
 //! Accept payments through a pre-built, Square-hosted checkout page. No frontend required.
 //!
-//! With the Square Checkout API, your customers can pay for a purchase through a simple, Square-hosted checkout page. It can be integrated into any payments workflow with minimal coding.
+//! With the Square Checkout API, your customers can pay for a purchase through a simple, Square-hosted
+//! checkout page. It can be integrated into any payments workflow with minimal coding.
 //!
-//! You can create and configure your checkout page through a CreatePaymentLink request, specifying the accepted payment methods and checkout options like tipping and custom fields. You can also configure a URL for customers to be redirected to once they complete their purchase.
+//! You can create and configure your checkout page through a CreatePaymentLink request, specifying the
+//! accepted payment methods and checkout options like tipping and custom fields. You can also configure a
+//! URL for customers to be redirected to once they complete their purchase.
 //!
-//! First time Square developers should utilize the payment link endpoints to create, update, retrieve, and list checkout pages.
+//! First time Square developers should utilize the payment link endpoints to create, update, retrieve, and
+//! list checkout pages.
 
 use crate::{
     config::Configuration,
     http::client::HttpClient,
-    models::{errors::ApiError, CreatePaymentLinkRequest, CreatePaymentLinkResponse},
+    models::{
+        errors::ApiError, CreatePaymentLinkRequest, CreatePaymentLinkResponse,
+        DeletePaymentLinkResponse,
+    },
 };
 
-const DEFAULT_URI: &str = "/online-checkout";
+const DEFAULT_URI: &str = "/online-checkout/payment-links";
 
 /// The Checkout API lets developers create and delete Square-hosted checkout links.
 pub struct CheckoutApi {
@@ -35,8 +42,18 @@ impl CheckoutApi {
         &self,
         body: &CreatePaymentLinkRequest,
     ) -> Result<CreatePaymentLinkResponse, ApiError> {
-        let url = format!("{}/payment-links", &self.url());
-        let response = self.client.post(&url, body).await?;
+        let response = self.client.post(&self.url(), body).await?;
+
+        response.deserialize().await
+    }
+
+    /// Deletes a payment link.
+    pub async fn delete_payment_link(
+        &self,
+        id: impl ToString,
+    ) -> Result<DeletePaymentLinkResponse, ApiError> {
+        let url = format!("{}/{}", &self.url(), id.to_string());
+        let response = self.client.delete(&url).await?;
 
         response.deserialize().await
     }
